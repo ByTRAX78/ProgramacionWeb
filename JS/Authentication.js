@@ -59,7 +59,7 @@ async function LoginAccount(email, pass) {
     try {
         signInWithEmailAndPassword(auth,email,pass);
     } catch (error) {
-        
+        alert(error);
     }
 }
 

@@ -14,6 +14,10 @@ ecuacion.addEventListener('input', function Inicio() {
     x = 0;
     var resultados = document.getElementById('resultados');
     var i = 1;
+    var l = 1;
+
+    xi.length = 0;
+    fi.length = 0;
 
     f = resolverEcuacion(x,ecuacion.value);
     mostrando(x,f);
@@ -61,7 +65,9 @@ ecuacion.addEventListener('input', function Inicio() {
                 }
             }
         }
-    } while (isNaN(xn) || isNaN(xp));
+        console.log(l);
+        l++;
+    } while ((isNaN(xn) || isNaN(xp)) && l!=50);
     
     var seccionResultados = document.querySelector('resultados');
     xi[1] = x;
@@ -72,7 +78,7 @@ ecuacion.addEventListener('input', function Inicio() {
 function formula(xn, xp) {
     
     var j=2;
-    var xe, fe;
+    var xe = [];
 
     do {
         xi[j] = xn + ((xp-xn)/2);
@@ -88,9 +94,9 @@ function formula(xn, xp) {
             xp = xi[j];
         }
         j++;
-        console.log(Number(xi[j].toFixed(6)));
-    } while (xi[j-1].toFixed(6) != xi[j-2].toFixed(6) && j != 50);
+    } while ((fi[j-1].toFixed(6) != 0) && j!=50);
     
-    mostrando(xi,fi);
+    xe = convergencia(xi);
+    mostrando(xi,fi,xe);
 }
 

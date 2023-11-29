@@ -1,8 +1,21 @@
 var i = 0;
 
-var tablaResultado = document.querySelector('.tabla');
 
-function mostrando(xInput, fInput) {
+
+function mostrando(xInput, fInput, xe) {
+
+    var tabla = document.createElement('table');
+    var caja = document.querySelector('.box-resultados');
+
+    try {
+        
+        caja.removeChild(caja.firstChild);
+    } catch (error) {
+        console.log(error);
+    }
+
+    caja.appendChild(tabla)
+
 
     for (let j=0; j<fInput.length; j++) {
 
@@ -16,14 +29,14 @@ function mostrando(xInput, fInput) {
         celda1.textContent = j;
         celda2.textContent = xInput[j].toFixed(6);
         celda3.textContent = fInput[j].toFixed(6);
-        celda4.textContent = 'No service';
+        celda4.textContent = xe[j].toFixed(6);
 
         fila.appendChild(celda1);
         fila.appendChild(celda2);
         fila.appendChild(celda3);
         fila.appendChild(celda4);
 
-        tablaResultado.appendChild(fila);
+        tabla.appendChild(fila);
         
     }
 

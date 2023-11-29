@@ -1,0 +1,27 @@
+#ecuacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#caja-ecuacion {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    background-color: antiquewhite;
+    align-items: center;
+    justify-content: center;
+}
+
+.ecuacion {
+
+}
+
+#resultados {
+    display: flex;
+}
+
+.box-resultados {
+    float: left;
+    background-color: antiquewhite;
+}

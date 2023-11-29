@@ -1,8 +1,6 @@
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
-import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
+import { signInWithEmailAndPassword } from'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
 const auth = window.firebaseAuth;
-
-type
 
 var buttonStatus = 'login';
 

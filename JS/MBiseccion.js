@@ -88,8 +88,8 @@ function formula(xn, xp) {
             xp = xi[j];
         }
         j++;
-        //console.log(Number(xi[j].toFixed(6)));
-    } while (xi[j-1].toFixed(6) != xi[j-2].toFixed(6));
+        console.log(Number(xi[j].toFixed(6)));
+    } while (xi[j-1].toFixed(6) != xi[j-2].toFixed(6) && j != 50);
     
     mostrando(xi,fi);
 }

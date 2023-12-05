@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    display: flex;
+   
+    height: 100vh;
+   box-sizing: border-box;
+   background-image: url('img/fondo.jpg');
+   background-size: cover; 
+   background-position: center center;
+  
+}
+body .Information{
+    display: flex;
+    
+   justify-content: center;
+   align-items: center;
+   
+   
+  
+}
+.content{
+    margin-top: 80px;
+    height: 85%;
+    display: flex;
+    align-items: center;
+}
+.Information{
+    border-radius: 50px;
+    box-shadow: 2px 0px 30px rgba(0, 0, 0, 0.5);
+    background-image: url('img/fondo.jpg');
+    background-size: cover; 
+   background-position: center center;
+    padding: 30px;
+    margin: 0 0 0 60px;
+    width: 40%;
+    height: 70%;
+    display: flex;
+   flex-direction: column;
+    justify-content: space-around;
+    
+}
+.Information h1{
+    display: flex;
+    align-items: end;
+    height: 20%;
+  
+    color: white;
+    font-size: 60px;
+    display: flex;
+    text-align: center;
+}
+.Information p{
+  
+    text-align: center;
+    font-size: 25px;
+    height: 70%;
+    display: flex;
+    justify-content: center; 
+    padding: 30px 50px;
+   
+ 
+    
+}
+
+
+.BarraNav{
+    width: 100%;
+    height: 80px;
+   
+
+    display: flex;
+    
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 70px;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 1000;
+}
+.Options{
+    display: flex;
+  margin-right:200px ;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+   
+}
+.separacion{
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+color: white;
+  margin: 0 40px;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+    
+}
+
+
+.ConterLogin{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Login{
+  padding:   10px 20px;
+
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+background: #0575E6; 
+background: -webkit-linear-gradient(to right, #0575E6, #021B79);  
+background: linear-gradient(to right, #021B79, #0575E6);
+
+
+transition: all 0.3s ease 0s;
+}
+
+.Login:hover {
+    
+    font-size: 28px;
+    
+    background: #00d2ff; 
+background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  
+background: linear-gradient(to right, #3a7bd5, #00d2ff); 
+
+    color: white;
+    transition: all 0.3s ease 0s;
+}
+
+.separacion:hover {
+  
+    padding: 30px;
+    color: #6441A5;  
+
+font-size: 35px;
+text-shadow: 2px 2px 7px rgb(139, 98, 213,0.5);
+transition: all 0.3s ease 0s;
+}

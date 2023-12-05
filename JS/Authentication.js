@@ -1,6 +1,10 @@
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
 import { signInWithEmailAndPassword } from'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
-const auth = window.firebaseAuth;
+import { signInWithPopup } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+const auth =     window.firebaseAuth;
+const provider = window.firebaseAuth;
 
 var buttonStatus = 'login';
 
@@ -72,3 +76,4 @@ async function RegisterAcount(email, pass) {
         console.log(error);
     }
 }
+

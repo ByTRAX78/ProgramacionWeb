@@ -14,7 +14,7 @@ ecuacion.addEventListener('input', function name() {
     
     x[0] = 0;
     f[0] = resolverEcuacion(x[0], ecuacion.value);
-    x[1] = 1git add
+    x[1] = 1;
     f[1] = resolverEcuacion(x[1], ecuacion.value);
 
     do {

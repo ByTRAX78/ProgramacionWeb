@@ -22,9 +22,9 @@
                     <button class="validate">Enter</button>
                 </div>
                 <div class="other">
-                    <button>Google</button>
-                    <button>Facebook</button>
-                    <button>GitHub</button>
+                    <button class="Google">Google</button>
+                    <button class="Facebook">Facebook</button>
+                    <button class="GitHub">GitHub</button>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -53,8 +53,38 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
+        const provider = new GoogleAuthProvider(app);
 
         window.firebaseAuth = auth;
+        window.firebaseAuth = provider;
+
+        var buttonGoogle = document.querySelector('.Google');
+
+        buttonGoogle.addEventListener('click', async () => {
+
+            signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+        });
+
+        
+
       </script>
       <script src="../JS/Authentication.js" charset="UTF-8" type="module"></script>
 </body>

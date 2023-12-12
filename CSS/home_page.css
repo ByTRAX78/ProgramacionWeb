@@ -11,10 +11,15 @@
     background-color: antiquewhite;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .ecuacion {
+    float: left;
+}
 
+.ecuigual {
+    float: right;
 }
 
 #resultados {

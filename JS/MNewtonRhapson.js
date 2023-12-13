@@ -1,247 +1,193 @@
 
 
-var terminos = [], terminos2 = [];
-var h1, h2;
-var ultCoe, ultCoe2;
-var ecuDeri = '', ecuDeri2 = '';
+import {mostrando} from './mostrar.js';
+
 var ecuacion = document.querySelector('.ecuacion');
 var ecuacion2 = document.querySelector('.ecuacion2');
 
-var v1 = parseFloat(ecuacion.value);
-var v2 = parseFloat(ecuacion2.value);
+var derivadas1, derivadas2, separadas1, separadas2;
+var X1 =[], X2=[];
 
-//Obtenemos la ecuacion del primer input
 ecuacion.addEventListener('input', function name() {
     
     var ecuacion1 = ecuacion.value;
-    //Dividimos la ecuacion por coeficientes
-    var coeficientes = ecuacion1.split(/(\+|-|=)/);
+    var separadas = ObtenerTerminos(ecuacion1);
+    var derivadas = ObtenerDerivadas(separadas);
 
-    //Pues llamamos a la funcion para guardar bien los terminos
-    terminos = ObtenerTerminos(coeficientes);
-    //Llamamos a la funcion para derivar la ecuacion
-    ecuDeri = ObtenerDerivadas(terminos)
+    separadas1 = separadas;
+    derivadas1 = derivadas;
 
-
-    Funcion();
+    Obtenerh1x1h2x2();
+    console.log('Hola');
 })
 
 ecuacion2.addEventListener('input', function name() {
     
     var ecuacion3 = ecuacion2.value;
-    var coeficientes2 = ecuacion3.split(/(\+|-|=)/);
+    var separadas = ObtenerTerminos(ecuacion3);
+    var derivadas = ObtenerDerivadas(separadas);
 
-    terminos2 = ObtenerTerminos(coeficientes2);
-    ecuDeri2 = ObtenerDerivadas(terminos2);
+    separadas2 = separadas;
+    derivadas2 = derivadas;
 
-
-    Funcion();
+    Obtenerh1x1h2x2();
+    console.log('hola');
 })
 
 
 
-function ObtenerTerminos(coeficientess) {
+function ObtenerTerminos(coeficientes) {
 
-    var terminos = [];
+    var ecuacionSeparada = coeficientes.split(/\+|\=/);
+    var separadas = [];
 
-    for (let i = 0; i <= coeficientess.length; i++) {
-    
-        //Si existe algun signo se concatena con el termino al que pertenece
-        if (coeficientess[i] == '+' || coeficientess[i] == '-') {
-            terminos[i] = coeficientess[i] + coeficientess[i+1];
-            i++;
-            //Evitamos guardar el signo = por que da problemas despues para
-            //derivar pero guardamos el coeficiente que esta despues de el
-        } else if (coeficientess[i] == '=') {
-            ultCoe = coeficientess[i+1];
-        } else {
-            terminos[i] = coeficientess[i];
-        } 
-    }
-    return terminos;
-}
-
-function ObtenerDerivadas(terminos) {
-
-    var terminos = terminos;
-    var ecuDeris = '';
-    var derivaciones = [];
-
-    for (let i = 0; i < terminos.length; i++) {
-        
-        //Cuando guardamos los coeficientes se quedan espacios vacios por ende usamos
-        //un if para saltarnos estos espacios y cuando queramos derivar no de errores
-        if (terminos[i] == isNaN || !terminos[i] || !terminos[i].includes('x')) {
+    for (let i = 0; i < ecuacionSeparada.length; i++) {
+        if (ecuacionSeparada[i].includes('-')) {
+            ecuacionSeparada[i] = ecuacionSeparada[i].split(/(?=\-)/);
             
-        } else {
-            //En un array guardamos las derovadas de los coeficientes de la ecuacion
-            //que introducimos
-            derivaciones[i] = math.derivative(terminos[i], 'x');
-            //De una ves obtenemos h1 y h2 y para ello debemos clasificar 
-            if (derivaciones[i].toString().includes('-')) {
-                if (derivaciones[i].toString().includes('x')) {
-                } else if (i == 1) {
-                    /*Retomando el ultimo coeficciente haciendo un despeje divimos el valor
-                    que no cuenta con para realizar la op y obtener h1 o h2 dependiendo su 
-                    lugar dentro del array*/
-                    h1 = ultCoe / derivaciones[i].toString();
-                } else if (i != 0 || i != 1) {
-                    h2 = ultCoe / derivaciones[i].toString();
-                }
-                //Aqui conquetamos las derivadas en una solo ecuacion
-                ecuDeris += derivaciones[i];
-                //Esta parte nos sirve para agregar el signo + a la ecuacion
-            } else if (i != 0) {
-                if (derivaciones[i].toString().includes('x')) {
-
-                } else if (i == 0) {
-                    h1 = ultCoe / derivaciones[i].toString();
-                } else if (i != 0 || i != 1) {
-                    h2 = ultCoe / derivaciones[i].toString();
-                }
-                ecuDeris = ecuDeris + ' + ' + derivaciones[i];
-            } else {
-                ecuDeris += derivaciones[i];
-                h1 = ultCoe / derivaciones[i].toString();
+            ecuacionSeparada[i] = ecuacionSeparada[i].filter(element => element !== '' && element !== ' - ' && element !== ' ');
+            for (let j = 0; j < ecuacionSeparada[i].length; j++) {
+                separadas.push(ecuacionSeparada[i][j]);
+                
             }
+        } else {
+            separadas.push(ecuacionSeparada[i]);
         }
     }
+    console.log('hola');
+    return separadas;
+}
 
-    return ecuDeris;
+function ObtenerDerivadas(ecu) {
+
+    console.log('hola');
+    var derivadas = ecu.slice(0,-1).map(expresion => math.derivative(expresion, 'x').toString());
+    derivadas.push(ecu[ecu.length - 1]);
+    return derivadas;
+}
+
+function Obtenerh1x1h2x2() {
+
+    console.log('Hola');
+    
+        var datos1 = derivadas1.findIndex(elemento => !elemento.includes('x'));
+        var datos2 = derivadas2.findIndex(elemento => !elemento.includes('x'));
+
+        if (datos1 == 0) {
+            //Sera h1
+            var operandos = derivadas1.filter(elemento => !elemento.includes('x'));
+            var h1 = operandos[1]/operandos[0];
+        } else {
+            //Sera h2
+            var operandos = derivadas1.filter(elemento => !elemento.includes('x'));
+            var h2 = operandos[1]/operandos[0];
+        }
+        
+        if (datos2 == 0) {
+            //Sera h1
+            var operandos = derivadas2.filter(elemento => !elemento.includes('x'));
+            var h1 = operandos[1]/operandos[0];
+        } else {
+            //Sera h2
+            var operandos = derivadas2.filter(elemento => !elemento.includes('x'));
+            var h2 = operandos[1]/operandos[0];
+        }
+        
+        X1.push(h1);
+        X2.push(h2);
+        Funcion(h1,h2);
 }
 
 //Aqui obtenemos la funcion de nuestras x
-function Funcion() {
+function Funcion(x1, x2) {
 
-    //Evitamos los espacios dentro de la derivada
-    if (ecuDeri != isNaN && ecuDeri2 != isNaN) {
+    console.log('Hola');
+        console.log(x1,x2);
 
-        //Aqui se va a guardar el resultado de la funcion
-        var funcion1 = 0 , funcion2 = 0 ;
+        let sep1 = [];
+        let sep2 = [];
+
+        sep1 = separadas1;
+        sep2 = separadas2;
     
-        //En el ciclo for repasamos la ecuacion
-        for (let i = 0; i < terminos.length; i++) {
-            //En busca de una x para sustituir por un valor
-            if (terminos[i] && terminos[i].includes('x') && isNaN(Number(terminos[i]))) {
-                
-                //Aqui solo preparamos el coeficiente al formato admisible por la libreriar mathjs
-                //o tambien podemos decir que la transformamos en una funcion
-                var funcion = math.compile(terminos[i]);
-                
-                //Aqui solo devidimos si sus valores seran sustituidos por h1 o h2
-                if (i==0) {
-                    //Sustituimos los valores y obtenemos los resultados
-                    var resultado = funcion.evaluate({ x:h1});
-                    
-                } else {
-                    var resultado = funcion.evaluate({ x:h2});
-                   
-                } 
-                //El resultado se va sumando para obtener el valor de funcion y despues
-                //poder usarlo despues en el sistema de ecuaciones
-                funcion1 += resultado;
-            } else if (terminos[i] && !(terminos[i].includes('x'))) {
-                funcion1 -= parseFloat(terminos[i]);
-                ultCoe = terminos[i];
-            }
-        }
+        var f = 0;
+        var f1 = 0;
 
-        //En esta seccion ocurre lo mismo pero para la segunda ecuacion divida en termino
-        for (let i = 0; i < terminos2.length; i++) {
-            if (terminos2[i] && terminos2[i].includes('x') && isNaN(Number(terminos2[i]))) {
-                
-                var funcions = math.compile(terminos2[i]);
-                if (i==0) {
-                    var resultados = funcions.evaluate({ x:h1});
-                    
-                    
-                } else {
-                    var resultados = funcions.evaluate({ x:h2});
-                }
-                funcion2 += resultados;
-            } else if (terminos2[i] && !(terminos2[i].includes('x'))) {
-                funcion2 -= parseFloat(terminos2[i]);
-                ultCoe2 = terminos2[i];
+        for (let i = 0; i < sep1.length; i++) {
+            
+            if (sep1[i].includes('x') && i == 0) {
+                var funcion = math.compile(sep1[i]);
+                f += funcion.evaluate({ x:x1});
+            } else if (sep1[i].includes('x') && i != 0) {
+                var funcion = math.compile(sep1[i]);
+                f += funcion.evaluate({ x:x2 });
+            } else {
+                f += -sep1[i];
             }
-        }
 
-        console.log(funcion1);
-        console.log(funcion2);
+            if (sep2[i].includes('x') && i == 0) {
+                var funcion = math.compile(sep2[i]);
+                f1 += funcion.evaluate({ x:x1 });
+            } else if (sep2[i].includes('x') && i != 0) {
+                var funcion = math.compile(sep2[i]);
+                f1 += funcion.evaluate({ x:x2 });
+            } else {
+                f1 += -sep2[i];
+            }
+
+            
+            
+        }
+        console.log(f, f1);
+        SistemaEcuaciones(x1, x2, f, f1,);
+   
+}
+
+function SistemaEcuaciones(h1, h2, f, f1) {
     
+
+    var sustituto1 = [...derivadas1];
+    var sustituto2 = [...derivadas2];
+
+    console.log(sustituto1);
+    
+    var index = sustituto1.findIndex(elemento => elemento.includes('x'));
+    var index2 = sustituto2.findIndex(elemento => elemento.includes('x'));
+
+    var x = math.compile(sustituto1[index]);
+    console.log(sustituto1);
+    var x2 = math.compile(sustituto2[index2]);
+
+    sustituto1[index] = x.evaluate({ x:h1 });
+    sustituto2[index2] = x2.evaluate({ x:h2 });
+
+
+    const a = [
+        [sustituto1[0], sustituto1[1]], 
+        [sustituto2[0], sustituto2[1]]
+    ];
+    var b = [-f, -f1];
+    var xx = numeric.solve(a, b); // [[-5.5], [20]]
+
+    console.log(derivadas1);
+
+    sacarXs(xx, h1, h2);
+}
+
+function sacarXs(xx, h1, h2) {
+    
+
+    X1.push(h1 + xx[0]);
+    X2.push(h2 + xx[1]);
+    console.log(X1, X2);
+
+    console.log(X1[X1.length - 1], X1[X1.length - 2]);
+
+    var valor = X1[X1.length - 1];
+
+    if (valor != 4) {
+        Funcion(X1[X1.length - 1], X2[X2.length - 1]);
     } else {
+        mostrando(X1,X2, X1);
     }
-    //Llamamos a la funcion que nos resuleve el sistema de ecuacion y mandamos el valor de las 
-    //funciones obtenidas
-    SistemaEcuaciones(funcion1, funcion2)
 }
-
-//En esta funcion resolvemos el sistema de ecuacion
-function SistemaEcuaciones(x1, x2) {
-
-    //En estos array guardaremos las ecuaciones por coeficiente listas para ser
-    //resueltas en el sitema de ecuaciones
-    var termEcuH = [];
-    var termEcuH2 = [];
-    
-    //Retomamos nuestra ecuacion derivadad y las vovlemos a separar por termino para facilitar
-    //su proecsamiento
-    termEcuH = ecuDeri.split(/(\+|-|=)/)
-    termEcuH2 = ecuDeri2.split(/(\+|-|=)/);
-
-    //Llamamos a las siguientes funciones para dejar a cada termino o coeficiente en el formato que 
-    //requiere la libreria
-    termEcuH = ObtenerTerminos(termEcuH);
-    termEcuH2 = ObtenerTerminos(termEcuH2);
-
-    //En este ciclo sustituimos para obtener las ecuaciones necesarias para el sistema de ecuaciones
-    for (let i = 0; i < termEcuH.length; i++) {
-        if (termEcuH[i] && termEcuH[i].includes('x')) {
-            //Dejamos preparados el coeficiente en el formato requerido en la libreria
-            var fH = math.compile(termEcuH[i]);
-            //Sustituimos por h1 o h2 o x1 y x2
-            if (i==0) {
-                termEcuH[i] = fH.evaluate({ x:h1 });
-            } else {
-                termEcuH[i] = fH.evaluate({ x:h2 });
-            }
-        }  
-        //Esta seccion es igual pero para la segunda ecuacion
-        if (termEcuH2[i] && termEcuH2[i].includes('x')) {
-            var fH2 = math.compile(termEcuH2[i]);
-            if (i==0) {
-                termEcuH2[i] = fH2.evaluate({ x:h1});
-            } else {
-                termEcuH2[i] = fH2.evaluate({ x:h2 });
-            }
-        } 
-    }
-
-    termEcuH = termEcuH.filter(element => element !== undefined && element !== null);
-    termEcuH2 = termEcuH2.filter(element => element !== undefined && element !== null);
-
-    termEcuH = termEcuH.map(element => {
-        if (typeof element === 'string' || element instanceof String) {
-            //Verifica si existe un + y lo elimina para eviar problemas con la libreria
-            if (element.charAt(0) === '+') {
-                return element.substring(2);
-            }
-            return element;
-        } else {
-            return element;
-        }
-    });
-
-    const coefficients = [
-        [termEcuH[0], termEcuH[1]],
-        [termEcuH2[0], termEcuH2[1]]
-      ];
-
-      const constants = [x1, x2];
-
-  
-      const solution = math.lusolve(coefficients, constants);
-  
-}
-
-console.log(ecuDeri);
-console.log(ecuDeri2);

@@ -41,6 +41,7 @@ body .Information{
     width: 40%;
     height: 70%;
     display: flex;
+    flex-wrap: wrap;
    flex-direction: column;
     justify-content: space-around;
     
@@ -63,7 +64,7 @@ body .Information{
     display: flex;
     justify-content: center; 
     padding: 30px 50px;
-   
+    flex-wrap: wrap;
  
     
 }

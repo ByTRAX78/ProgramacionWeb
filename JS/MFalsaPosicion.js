@@ -8,13 +8,20 @@ var f = [];
 
 ecuacion.addEventListener('input', function name() {
 
+    //Reseteamos los valores cada vez que ingresamos un nuevo caracter a la
+    //ecuacion
     x = [];
     f = [];
     var l=1;
+    //Variables para distinguir entre el tipo de X de acuerdo al signo de su
+    // f
     var xp, xn, fn, fp;
-    x[0] = 0;
+    //Primer valor de rango para obtener la raiz
+    x[0] = 3;
+    //Aqui obtenemos el valor de la funcion de x
     f[0] = resolverEcuacion(x[0],ecuacion.value);
-
+    //Verificamos si la funcion de x debe de ser xn o xp y guardamos los valores
+    //en un array para que despues sean mostrados
     if (f[0] > 0) {
         xp = x[0];
         fp = f[0];
@@ -22,7 +29,8 @@ ecuacion.addEventListener('input', function name() {
         xn = x[0];
         fn = f[0];
     }
-    x[1] = 0;
+    //Ponemos el segundo valor para obtener la raiz
+    x[1] = 4;
 
 
     do {
@@ -31,6 +39,9 @@ ecuacion.addEventListener('input', function name() {
         /*Si xn esta vacia, nos dara true, por ende x = 0 es xp
           si obtenemos false la x es xp
         */
+
+          //En esta seccion verificamos cual es el valor del siguiente rango
+          //en caso de querer que el programa lo hago
         if (isNaN(xn)) {
             if (f[1] > 0) {
                 x[1] = -x[1];
@@ -42,7 +53,7 @@ ecuacion.addEventListener('input', function name() {
                     x[1] = -x[1];
                 }
             } else {
-                xn = x[1];
+                xn = 3;
                 fn = f[1];
             }
         } else {
@@ -64,6 +75,7 @@ ecuacion.addEventListener('input', function name() {
         l++;
     } while ((isNaN(xp) || isNaN(xn)) && l!=50);
 
+    //Mandamos los valores de xp, xn y sus funciones a la formula
     formula(xn, xp, fn, fp)
 
 })
@@ -74,12 +86,14 @@ function formula(xn, xp, fn, fp) {
     var i = 2, xi;
 
     do {
-        console.log(xp + ' ' + xn + ' ' + fn + ' ' + fp);
+        //Numerador de la formula
         xi = ((xp*fn)-(xn*fp));
+        //Numerado entre el denominador de la formula
         x[i] = xi/(fn-fp);
-        console.log(i);
+        //Mandamos el valor de la nueva x para obtener el valor de la 
+        //funcion de esta
         f[i] = resolverEcuacion(x[i], ecuacion.value);
-        console.log(f[i]);
+        //Verificamos si esta es xn o xp
         if (f[i] < 0) {
             xn = x[i];
             fn = f[i];
@@ -90,6 +104,8 @@ function formula(xn, xp, fn, fp) {
         i++;
     } while ((f[i-1].toFixed(6) != 0 ) && i!=500);
 
+    //Obtenemos la comprobacion por convergencia
     xe = convergencia(x);
+    //Funcion para mostrar los resultados en pagina web
     mostrando(x, f, xe);
 }

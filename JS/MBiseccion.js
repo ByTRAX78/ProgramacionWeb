@@ -10,6 +10,9 @@ var ecuacion = document.querySelector('.ecuacion');
 
 ecuacion.addEventListener('input', function Inicio() {
 
+    //Variables locales para guardar xn y xp, se guardan en arrays
+    xi = [];
+    fi = [];
     var xn, xp;
     x = 0;
     var resultados = document.getElementById('resultados');
@@ -18,12 +21,13 @@ ecuacion.addEventListener('input', function Inicio() {
 
     xi.length = 0;
     fi.length = 0;
-
+    //Aqui obtenemos el valor de funcion de x1 igual a 0
     f = resolverEcuacion(x,ecuacion.value);
+    //mostramos el resultado
     mostrando(x,f);
     xi[0] = x;
     fi[0] = f;
-
+    //Decidimos si es xn o xp
     if (f < 0) {
         xn = x;
     } else {
@@ -31,10 +35,10 @@ ecuacion.addEventListener('input', function Inicio() {
     }
     
 
+    //Bucle donde obtenemos el siguiente valor de ya sea de xp o xn
     do {
         x++;
         f = resolverEcuacion(x,ecuacion.value);
-
         if (isNaN(xn)) {
             console.log('xn esta vacio');
             if (f > 0) {
@@ -72,6 +76,8 @@ ecuacion.addEventListener('input', function Inicio() {
     var seccionResultados = document.querySelector('resultados');
     xi[1] = x;
     fi[1] = f;
+    //Mandamos los valors de xn y xp a su formula y obtener los siguientes
+    //iteraciones
     formula(xn,xp);
 })
 
@@ -80,13 +86,17 @@ function formula(xn, xp) {
     var j=2;
     var xe = [];
 
+    //Bucle que se repite hasta que los valores de x se repiten
     do {
+        //La formaila del metodo de la biseccion
         xi[j] = xn + ((xp-xn)/2);
+        //Aqui obtenemos la funcion de la x correspondiente
         fi[j] = resolverEcuacion(xi[j],ecuacion.value);
 
         console.log('tenemos a ' + xn + ' y ' + xp + ' lo que nos da ' + xn + ((xp-xn)/2));
         console.log(xi[j] + ' || ' + fi[j]);
 
+        //Decidimos si es xn o xp
         if (fi[j] < 0) {
             xn = xi[j];
             console.log(xn);
@@ -96,7 +106,9 @@ function formula(xn, xp) {
         j++;
     } while ((fi[j-1].toFixed(6) != 0) && j!=50);
     
+    //Pruebas de convergencia
     xe = convergencia(xi);
+    //MOstramos los valores en el navegador
     mostrando(xi,fi,xe);
 }
 

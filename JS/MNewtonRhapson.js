@@ -1,15 +1,25 @@
 
-
 import {mostrando} from './mostrar.js';
 
+//Donde guardaremos las ecuaciones que ingresa el usuario
 var ecuacion = document.querySelector('.ecuacion');
 var ecuacion2 = document.querySelector('.ecuacion2');
 
+/*
+    separadas es donde guardaremos la ecuacion dividida en columnas
+    derivada es donde guardaremos la derivada de los coeficientes obtenido
+    al separar las columnas
+*/
 var derivadas1, derivadas2, separadas1, separadas2;
 var X1 =[], X2=[];
 
 ecuacion.addEventListener('input', function name() {
     
+    X1 = [];
+    X2 = [];
+    derivadas1 = [];
+    separadas1 = [];
+
     var ecuacion1 = ecuacion.value;
     var separadas = ObtenerTerminos(ecuacion1);
     var derivadas = ObtenerDerivadas(separadas);
@@ -18,10 +28,14 @@ ecuacion.addEventListener('input', function name() {
     derivadas1 = derivadas;
 
     Obtenerh1x1h2x2();
-    console.log('Hola');
 })
 
 ecuacion2.addEventListener('input', function name() {
+
+    X1 = [];
+    X2 = [];
+    derivadas2 = [];
+    separadas2 = [];
     
     var ecuacion3 = ecuacion2.value;
     var separadas = ObtenerTerminos(ecuacion3);
@@ -31,20 +45,23 @@ ecuacion2.addEventListener('input', function name() {
     derivadas2 = derivadas;
 
     Obtenerh1x1h2x2();
-    console.log('hola');
 })
 
 
-
+//En esta funcion separaremos la ecuacion por columnas
 function ObtenerTerminos(coeficientes) {
 
+    //Dividimos la ecuacion por a partir de los signos mas y =
     var ecuacionSeparada = coeficientes.split(/\+|\=/);
     var separadas = [];
 
+    //ciclo para separar los coeficientes donde exista un menos
     for (let i = 0; i < ecuacionSeparada.length; i++) {
+        
         if (ecuacionSeparada[i].includes('-')) {
+            //Separa la ecuacion donde exista un -
             ecuacionSeparada[i] = ecuacionSeparada[i].split(/(?=\-)/);
-            
+            //Filtramos para quitar espacios
             ecuacionSeparada[i] = ecuacionSeparada[i].filter(element => element !== '' && element !== ' - ' && element !== ' ');
             for (let j = 0; j < ecuacionSeparada[i].length; j++) {
                 separadas.push(ecuacionSeparada[i][j]);
@@ -54,22 +71,20 @@ function ObtenerTerminos(coeficientes) {
             separadas.push(ecuacionSeparada[i]);
         }
     }
-    console.log('hola');
     return separadas;
 }
 
+//En esta funcion derivaremos los coeficientes 
 function ObtenerDerivadas(ecu) {
 
-    console.log('hola');
     var derivadas = ecu.slice(0,-1).map(expresion => math.derivative(expresion, 'x').toString());
     derivadas.push(ecu[ecu.length - 1]);
     return derivadas;
 }
 
 function Obtenerh1x1h2x2() {
-
-    console.log('Hola');
     
+    try {
         var datos1 = derivadas1.findIndex(elemento => !elemento.includes('x'));
         var datos2 = derivadas2.findIndex(elemento => !elemento.includes('x'));
 
@@ -96,12 +111,15 @@ function Obtenerh1x1h2x2() {
         X1.push(h1);
         X2.push(h2);
         Funcion(h1,h2);
+    } catch (error) {
+        console.log(error);
+    }
+        
 }
 
 //Aqui obtenemos la funcion de nuestras x
 function Funcion(x1, x2) {
 
-    console.log('Hola');
         console.log(x1,x2);
 
         let sep1 = [];
@@ -149,13 +167,11 @@ function SistemaEcuaciones(h1, h2, f, f1) {
     var sustituto1 = [...derivadas1];
     var sustituto2 = [...derivadas2];
 
-    console.log(sustituto1);
     
     var index = sustituto1.findIndex(elemento => elemento.includes('x'));
     var index2 = sustituto2.findIndex(elemento => elemento.includes('x'));
 
     var x = math.compile(sustituto1[index]);
-    console.log(sustituto1);
     var x2 = math.compile(sustituto2[index2]);
 
     sustituto1[index] = x.evaluate({ x:h1 });
@@ -169,8 +185,6 @@ function SistemaEcuaciones(h1, h2, f, f1) {
     var b = [-f, -f1];
     var xx = numeric.solve(a, b); // [[-5.5], [20]]
 
-    console.log(derivadas1);
-
     sacarXs(xx, h1, h2);
 }
 
@@ -179,13 +193,10 @@ function sacarXs(xx, h1, h2) {
 
     X1.push(h1 + xx[0]);
     X2.push(h2 + xx[1]);
-    console.log(X1, X2);
-
-    console.log(X1[X1.length - 1], X1[X1.length - 2]);
 
     var valor = X1[X1.length - 1];
 
-    if (valor != 4) {
+    if (valor != 4 && X1.length < 50) {
         Funcion(X1[X1.length - 1], X2[X2.length - 1]);
     } else {
         mostrando(X1,X2, X1);

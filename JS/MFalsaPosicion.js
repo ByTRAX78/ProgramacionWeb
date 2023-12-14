@@ -8,12 +8,14 @@ var f = [];
 
 ecuacion.addEventListener('input', function name() {
 
+    x = [];
+    f = [];
     var l=1;
     var xp, xn, fn, fp;
     x[0] = 0;
     f[0] = resolverEcuacion(x[0],ecuacion.value);
 
-    if (f[0 > 0]) {
+    if (f[0] > 0) {
         xp = x[0];
         fp = f[0];
     } else {
@@ -22,6 +24,7 @@ ecuacion.addEventListener('input', function name() {
     }
     x[1] = 0;
 
+
     do {
         x[1]++;
         f[1] = resolverEcuacion(x[1],ecuacion.value);
@@ -29,7 +32,6 @@ ecuacion.addEventListener('input', function name() {
           si obtenemos false la x es xp
         */
         if (isNaN(xn)) {
-            
             if (f[1] > 0) {
                 x[1] = -x[1];
                 f[1] = resolverEcuacion(x[1], ecuacion.value);
@@ -40,7 +42,8 @@ ecuacion.addEventListener('input', function name() {
                     x[1] = -x[1];
                 }
             } else {
-                x[1] = -x[1];
+                xn = x[1];
+                fn = f[1];
             }
         } else {
             
@@ -76,16 +79,16 @@ function formula(xn, xp, fn, fp) {
         x[i] = xi/(fn-fp);
         console.log(i);
         f[i] = resolverEcuacion(x[i], ecuacion.value);
-
+        console.log(f[i]);
         if (f[i] < 0) {
             xn = x[i];
             fn = f[i];
         } else {
             xp = x[i];
-            fp = x[i];
+            fp = f[i];
         }
         i++;
-    } while ((f[i-1].toFixed(6) != 0 ) && i!=50);
+    } while ((f[i-1].toFixed(6) != 0 ) && i!=500);
 
     xe = convergencia(x);
     mostrando(x, f, xe);

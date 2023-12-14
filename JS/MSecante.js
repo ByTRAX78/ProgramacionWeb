@@ -11,7 +11,8 @@ var ecuacion = document.querySelector('.ecuacion');
 ecuacion.addEventListener('input', function name() {
     
     var i = 2;
-    
+    x=[];
+    f=[];
     x[0] = 0;
     f[0] = resolverEcuacion(x[0], ecuacion.value);
     x[1] = 1;

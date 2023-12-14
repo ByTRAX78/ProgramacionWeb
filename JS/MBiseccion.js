@@ -10,7 +10,6 @@ var ecuacion = document.querySelector('.ecuacion');
 
 ecuacion.addEventListener('input', function Inicio() {
 
-    //Variables locales para guardar xn y xp, se guardan en arrays
     xi = [];
     fi = [];
     var xn, xp;

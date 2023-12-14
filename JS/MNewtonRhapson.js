@@ -26,8 +26,10 @@ ecuacion.addEventListener('input', function name() {
     var ecuacion1 = ecuacion.value;
     //Dividmos la ecuacion por columnas y las almacenamos en arrya
     var separadas = ObtenerTerminos(ecuacion1);
+    console.log(separadas);
     //Derivamos cada columna
     var derivadas = ObtenerDerivadas(separadas);
+    console.log(derivadas);
 
     //Guardamos la ecuacion dividida por columnas y las derivadas
     //en variables globales
@@ -150,6 +152,7 @@ function Funcion(x1, x2) {
         var f = 0;
         var f1 = 0;
 
+
         //En este for solo se recorre en busca de un coneficiente con para
         //depues sustituir los valores de sus x por x1 y x2 
         for (let i = 0; i < sep1.length; i++) {
@@ -163,6 +166,7 @@ function Funcion(x1, x2) {
             } else {
                 f += -sep1[i];
             }
+
 
             if (sep2[i].includes('x') && i == 0) {
                 var funcion = math.compile(sep2[i]);
@@ -197,10 +201,24 @@ function SistemaEcuaciones(h1, h2, f, f1) {
     var x = math.compile(sustituto1[index]);
     var x2 = math.compile(sustituto2[index2]);
 
+    
+
     //Una ves se sustituyen sus valores se agregan al respectivo lugar de sus ecuaciones
     //para formar el sistema de ecuaciones
-    sustituto1[index] = x.evaluate({ x:h1 });
-    sustituto2[index2] = x2.evaluate({ x:h2 });
+    if (index == 0) {
+        sustituto1[index] = x.evaluate({ x:h1 });
+    } else if (index >= 0) {
+        sustituto1[index] = x.evaluate({ x:h2 });
+    }
+
+    if (index2 == 0) {
+        sustituto2[index2] = x2.evaluate({ x:h1 });
+    } else if (index2) {
+        sustituto2[index2] = x2.evaluate({ x:h2 });
+    }
+    
+
+    console.log(sustituto1[index]);
 
     //Se resuleve el sistema de ecuaciones y se guardan en una variable local
     const a = [
@@ -229,6 +247,6 @@ function sacarXs(xx, h1, h2) {
         Funcion(X1[X1.length - 1], X2[X2.length - 1]);
     } else {
         //Aqui mostramos los resultados en ordenador
-        mostrando(X1,X2, X1);
+        mostrando(X1,X2, X2);
     }
 }

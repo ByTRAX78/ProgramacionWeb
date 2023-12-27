@@ -20,6 +20,7 @@ ecuacion.addEventListener('input', function name() {
 
     //Ciclo donde repetimos la formula hasta obtner el resultado deseado
     do {
+       
         //Formula del metodo de la secante
         x[i] = x[i-1] - (((x[i-1]-x[i-2])*(f[i-1]))/(f[i-1]-(f[i-2])))
         //Aqui obtenemos la funcion de x

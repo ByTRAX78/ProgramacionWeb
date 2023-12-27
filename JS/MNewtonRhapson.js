@@ -199,6 +199,7 @@ function SistemaEcuaciones(h1, h2, f, f1) {
     var index2 = sustituto2.findIndex(elemento => elemento.includes('x'));
 
     var x = math.compile(sustituto1[index]);
+    console.log(sustituto2);
     var x2 = math.compile(sustituto2[index2]);
 
     
@@ -242,7 +243,7 @@ function sacarXs(xx, h1, h2) {
 
     //Una condicional para saber cuando ya se llego a un resoltado deseado o cuando ya
     //fueron mas de 50 iteraciones
-    if (valor != X1[X1.length - 2] && X1.length < 50) {
+    if (valor.toFixed(6) != X1[X1.length - 2].toFixed(6) && X1.length < 50) {
         //Funciona para repetir el proceso cuantas veces sean necesarias
         Funcion(X1[X1.length - 1], X2[X2.length - 1]);
     } else {

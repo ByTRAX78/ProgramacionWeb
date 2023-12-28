@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Principal</title>
+<link rel="stylesheet" href="../CSS/Index.css">
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        overflow-y: hidden;
+}
+
+    
+    #frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+</head>
+<body>
+    <div class="BarraNav">
+        <div class="ConterLogin">
+        <button onclick="window.location.href='Index.html'" class="Login">Log in</button>
+    </div>
+        <div class="Options">
+        <a href="#" class="separacion">
+            <p>Home</p>
+        </a>
+        <a href="#" class="separacion" id="Abaut">
+            <p>Abaut us</p>
+        </a>
+        <a href="#" class="separacion">
+            <p>Foroum</p>
+        </a>
+        </div>
+    </div>
+    <div id="frame">
+    </div>
+    <script src="../JS/index.js" type="module"></script>
+</body>
+</html>

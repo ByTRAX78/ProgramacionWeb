@@ -24,9 +24,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
         const provider = new GoogleAuthProvider(app);
         const db = getFirestore(app);
 
-
-        console.log(provider);
-        console.log(db);
         window.firebaseAuth = auth;
         window.firebaseAuth = db;
         var buttonGoogle = document.querySelector('.Google');
@@ -44,12 +41,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
                     // The signed-in user info.
                     const user = result.user;
                     localStorage.setItem('user',JSON.stringify(user));
-                    console.log(user.displayName);
+                    
                     // IdP data available using getAdditionalUserInfo(result)
                     // ...
                     window.firebaseAuth = user;
-                console.log(user);
-                    window.location.href = '../HTML/foro.html?user';
+                    window.location.href = '../HTML/frame.html?user';
                 }).catch((error) => {
                     // Handle Errors here.
                     const errorCode = error.code;
@@ -143,3 +139,4 @@ async function RegisterAcount(email, pass) {
     }
 }
 
+export { auth };

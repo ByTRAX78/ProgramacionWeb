@@ -1,14 +1,16 @@
 var i = 0;
-
-
-
+//Funcion para mostrar la ecuaciones
+/*
+xInput, fInput y xe son los conjuntos de datos para mostrar en pantalla
+*/
 function mostrando(xInput, fInput, xe) {
 
+    //Son los elementos que usaremos para mostrar los datos
     var tabla = document.createElement('table');
     var caja = document.querySelector('.box-resultados');
 
     try {
-        
+        //Quitamos los datos anteriores para mostrar los nuevos y no se amontonen
         caja.removeChild(caja.firstChild);
     } catch (error) {
         console.log(error);
@@ -16,7 +18,7 @@ function mostrando(xInput, fInput, xe) {
 
     caja.appendChild(tabla)
 
-
+    //Ciclo donde crearemos los elementos de la tabla y los llenaremos con los conjuntos
     for (let j=0; j<fInput.length; j++) {
 
         var fila = document.createElement('thead');
@@ -27,6 +29,7 @@ function mostrando(xInput, fInput, xe) {
 
         var celda = document.createElement('td'); 
         celda1.textContent = j;
+        //Metemos los datos con 6 decimas
         celda2.textContent = xInput[j].toFixed(6);
         celda3.textContent = fInput[j].toFixed(6);
         celda4.textContent = xe[j].toFixed(6);
@@ -39,41 +42,6 @@ function mostrando(xInput, fInput, xe) {
         tabla.appendChild(fila);
         
     }
-
-    
-    
-    /*if (xInput == 0) {
-        var fila = document.createElement('thead');
-        var encabezados = ['Iteracion', 'x', 'f(x)', 'Convergencia'];
-
-        for (let j=0; j<4; j++) {
-            
-            var celda = document.createElement('td');
-            celda.textContent = encabezados[j];
-
-            fila.appendChild(celda);
-            tablaResultado.appendChild(fila);
-        }
-        i++;
-        console.log(i);
-
-    }
-        fila = document.createElement('thead');
-        var celda = [];
-        celda[0] = document.createElement('td');
-        celda[0].textContent = xInput;
-        fila.appendChild(celda[0]);
-
-        celda[1] = document.createElement('td');
-        celda[1].textContent = fInput;
-        fila.appendChild(celda[1]);
-        tablaResultado.appendChild(fila);
-
-    
-
-
-    i++;*/
-    
 }
 
 

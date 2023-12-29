@@ -106,3 +106,12 @@ input {
     font-size: 20px;
 }
 
+.respuesta {
+    display: flex;
+    flex-direction: column;
+}
+
+.btnErase {
+    background-color: antiquewhite;
+}
+

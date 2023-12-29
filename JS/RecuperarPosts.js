@@ -1,61 +1,32 @@
 import { addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";    
 import { auth } from "./Authentication.js"
-import { imgPerfil } from "./foro.js";
+import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.js";
+//Varaibles con datos de la base de datos de firebas
 const db = window.firebaseAuth;
 
 var posts = document.querySelector("#posts");
+var cResp = [];
 
 const querySnapshot = await getDocs(collection(db, "posts"));
 const user = JSON.parse(localStorage.getItem('user'));
 
+console.log(user);
+
 var j = 0;
 var idPost = [];
-
+//en este ciclo obtnemos los posts de la base de datos
 querySnapshot.forEach((doc) => {
 
   console.log(doc);
   idPost.push(doc.id);
+  //Funcion para obtener los datos del usuario y mostrarlos 
+  var usuarioPost = SeccionUsuario(doc);
+  //Funcion para obtner la pregnta y mostrarlos
+  var postsPregunta = SeccionPregunta(doc);
+  //Seccion para prepara la seccion de preguntas y mostrarlas
+  var dRespuestas = SeccionRespuestas(doc);
 
-  var usuarioPost = document.createElement('div');
-  usuarioPost.classList.add("usuario");
-  var postsPregunta = document.createElement('div');
-  postsPregunta.classList.add("pregunta");
-  var dRespuestas = document.createElement('div');
-  dRespuestas.classList.add('respuestas');
-  var postsRespuesta = document.createElement('div');
-  postsRespuesta.classList.add("respuesta");
-  var secionRespuesta = document.createElement('div');
-  secionRespuesta.classList.add('escribirRespuesta');
-  var usuarioResp = document.createElement('div');
-  usuarioResp.classList.add('usuario')
-  secionRespuesta.appendChild(usuarioResp)
-  var secRespuesta = document.createElement('div');
-  secRespuesta.classList.add('pregunta');
-  var txtRespuesta = document.createElement('textarea');
-  txtRespuesta.classList.add('resp');
-  secRespuesta.appendChild(txtRespuesta);
-  secionRespuesta.appendChild(secRespuesta);
-  var enviarResponder = document.createElement('div')
-  enviarResponder.classList.add('postear');
-  var btnResponder = document.createElement('button');
-  btnResponder.textContent = 'Responder';
-  btnResponder.classList.add('responder');
-  enviarResponder.appendChild(btnResponder);
-  secionRespuesta.appendChild(enviarResponder);
-
-  var imgUser = document.createElement('img');
-    var pUsuario = document.createElement('p');
-
-    imgUser.src = doc.data().imgUsuario;
-    usuarioPost.appendChild(imgUser);
-
-    pUsuario.textContent = doc.data().nombreUsuario;
-    usuarioPost.appendChild(pUsuario);
-
-    var pPregunta = document.createElement('p');
-    pPregunta.textContent = doc.data().pregunta;
-    postsPregunta.appendChild(pPregunta);
-
+  //La condicional para saber si se mostrara en la izquierda o en la derecha
   if (j % 2 == 0) {
     var postsLeft = document.createElement('div');
     postsLeft.classList.add("post");
@@ -65,8 +36,6 @@ querySnapshot.forEach((doc) => {
   
     postsLeft.appendChild(usuarioPost);
     postsLeft.appendChild(postsPregunta);
-    dRespuestas.appendChild(secionRespuesta);
-    dRespuestas.appendChild(postsRespuesta);
     postsLeft.appendChild(dRespuestas);
     posts.appendChild(postsLeft);
   } else if (j % 2 != 0) {
@@ -77,18 +46,19 @@ querySnapshot.forEach((doc) => {
     
     postsRight.appendChild(usuarioPost);
     postsRight.appendChild(postsPregunta);
-    dRespuestas.appendChild(secionRespuesta);
-    dRespuestas.appendChild(postsRespuesta);
     postsRight.appendChild(dRespuestas);
     posts.appendChild(postsRight);
   }
   j++;
 });
-console.log(idPost);
+
+//Elementos para que el usuario pueda responder posts
 let date = new Date();
 var btnResponder = document.querySelectorAll('.responder');
 var txtResp = document.querySelectorAll('.resp')
 var j = 0;
+
+//Aqui obtnemos el post la seccion donde el usuario quiere responder
 for (let i = 0; i  < btnResponder.length;i++) {
   btnResponder[i].addEventListener('click', async function name() {
       
@@ -103,8 +73,149 @@ for (let i = 0; i  < btnResponder.length;i++) {
     } catch (error) {
       console.log(error);
     }
+    txtResp[i].value = '';
+    alert('Tu respuesta se envio');
   });
-  
 }
 
-export { querySnapshot };
+//Obtenemos los datos del ususaior para mostrarlos en pantalla y se muestran
+function SeccionUsuario(doc) {
+  
+  var usuarioPost = document.createElement('div');
+  var imgUser = document.createElement('img');
+  var pUsuario = document.createElement('p');
+
+  usuarioPost.classList.add("usuario");
+
+  imgUser.src = doc.data().imgUsuario;
+  pUsuario.textContent = doc.data().nombreUsuario;
+
+  usuarioPost.appendChild(pUsuario);
+  usuarioPost.appendChild(imgUser);
+
+  return usuarioPost;
+}
+
+function SeccionPregunta(doc) {
+  
+  var postsPregunta = document.createElement('div');
+  var pPregunta = document.createElement('p');
+
+  postsPregunta.classList.add("pregunta");
+
+  pPregunta.textContent = doc.data().pregunta;
+  postsPregunta.appendChild(pPregunta);
+  
+  return postsPregunta;
+}
+//Creamos los elemetos para mostrar la respuesta y los mostramos 
+function SeccionRespuestas(doc) {
+  //Este sera la seccion de respuestas del post
+  var dRespuestas = document.createElement('div');
+  /**
+   * postsRespuesta contendra las respuestas que ya fueron respondidas
+   * secionRespuesta es la seccion donde el usuario podra escribir una 
+   * nueva respuesta
+   */
+  var postsRespuesta = document.createElement('div');
+  var secionRespuesta = document.createElement('div');
+  //usuarioResp es donde saldra la info del usuario que respondio el post
+  var usuarioResp = document.createElement('div');
+  //secRespuesta es la seccion que contendra la el txtArea para responder
+  var secRespuesta = document.createElement('div');
+  var txtRespuesta = document.createElement('textarea');
+  //Seccion donde se podran econtrara el boton para enviar la respuesta
+  var enviarResponder = document.createElement('div')
+  var btnResponder = document.createElement('button');
+  var btnBorrarPregunta = document.createElement('button');
+
+  
+  dRespuestas.classList.add('respuestas');
+
+  postsRespuesta.classList.add("respuesta");
+  secionRespuesta.classList.add('escribirRespuesta');
+
+
+  secRespuesta.classList.add('pregunta');
+  txtRespuesta.classList.add('resp');
+  enviarResponder.classList.add('postear');
+  btnResponder.classList.add('responder');
+  btnBorrarPregunta.classList.add('bPregunta');
+
+  //Funcion para obtener las respuestas que esten asociadas al post
+  ObtenerRespuestas(doc, postsRespuesta);
+  
+  secRespuesta.appendChild(txtRespuesta);
+  secionRespuesta.appendChild(secRespuesta);
+
+  btnResponder.textContent = 'Responder';
+  btnBorrarPregunta.textContent = 'Borrar'
+  enviarResponder.appendChild(btnResponder);
+  enviarResponder.appendChild(btnBorrarPregunta);
+  secionRespuesta.appendChild(enviarResponder);
+
+  dRespuestas.appendChild(secionRespuesta);
+  dRespuestas.appendChild(postsRespuesta);
+
+  return dRespuestas;
+}
+
+async function ObtenerRespuestas(doc, usuarioResp) {
+
+  //Obtnemos la collecion de respuestas 
+  const queryResults = await getDocs(collection(db,'respuestas'));
+
+  queryResults.forEach(answers => {
+
+    //Con el id del post vamos verificando que respuestas tiene asociadas
+    if (answers.data().idPregunta == doc.id) {
+
+      //Creamos los elementos para mostrar las respuestas
+      cResp.push(answers.id);
+      var datosUsuario = document.createElement('div');
+
+      var nombreUsuario = document.createElement('p');
+      var imgUsuario = document.createElement('img');
+      var respuesta = document.createElement('p');
+      
+      datosUsuario.classList.add('usuario');
+
+      //Ponemos los datos de la sesion existente
+      nombreUsuario.textContent = answers.data().nombreUsuario;
+      imgUsuario.src = answers.data().imgUsuario;
+      respuesta.textContent = answers.data().respuesta;
+
+      datosUsuario.appendChild(imgUsuario);
+      datosUsuario.appendChild(nombreUsuario);
+      datosUsuario.appendChild(respuesta);
+      
+      //Verificamos con el id del post que las respuestas que estan asociadas a el
+      if (user.displayName == answers.data().nombreUsuario) {
+        console.log('Aqui si');
+        var btnErase = document.createElement('button');
+        btnErase.textContent = 'Borrar';
+        btnErase.classList.add('borrar');
+        datosUsuario.appendChild(btnErase);
+
+        btnErase.addEventListener('click', function name(params) {
+          console.log('Vamo a borrar ' + answers.id);
+          borrarRespuesta(answers.id);
+        });
+      }
+
+      usuarioResp.appendChild(datosUsuario);
+    }
+    return usuarioResp;
+  });
+}
+
+
+var btnsBorrarPregunta = document.querySelectorAll('.bPregunta');
+
+//Evento para borrar una pregunta
+for (let i = 0; i < btnsBorrarPregunta.length; i++) {
+  
+  btnsBorrarPregunta[i].addEventListener('click', function name() {
+    borrarPregunta(idPost[i]);
+  });
+}

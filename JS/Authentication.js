@@ -28,6 +28,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
         window.firebaseAuth = db;
         var buttonGoogle = document.querySelector('.Google');
 
+        //Esto es para iniciar sesión con Google
         try {
             buttonGoogle.addEventListener('click', async () => {
 
@@ -45,7 +46,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
                     // IdP data available using getAdditionalUserInfo(result)
                     // ...
                     window.firebaseAuth = user;
-                    window.location.href = '../HTML/frame.html?user';
+
+                    inicioSecionCorrecto(user);
                 }).catch((error) => {
                     // Handle Errors here.
                     const errorCode = error.code;
@@ -61,17 +63,35 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
             
         }
         
+//Iniciar sesión con el correo electronico
+function inicioSecionCorrecto(user) {
+
+    var btnLogin = parent.document.querySelector('.Login');
+    var img = document.createElement('img');
+    
+    img.src = user.photoURL;
+    btnLogin.classList.add('imgUsuario');
+    img.classList.add('imgUsuario');
+    btnLogin.textContent = '';
+    btnLogin.classList.remove('Login');
+
+    btnLogin.appendChild(img);
+    
+    var over = parent.document.getElementById('overlay');
+    over.innerHTML = '';
+    over.style.visibility = 'hidden';
+
+    
+}
         
-
+//Obtener elementos para el inicio de sesión con correo
 var buttonStatus = 'login';
-
 var buttonsLoginAndSign = document.getElementsByClassName('a');
-
 var email = document.querySelector('.email');
 var pass = document.querySelector('.pass');
 
 
-
+//Evento para iniciar sesión o para registrar un correo electronico
 for (let i=0; i<buttonsLoginAndSign.length; i++) {
 
     document.getElementsByClassName('a')[i].addEventListener('click', function () {
@@ -82,6 +102,7 @@ for (let i=0; i<buttonsLoginAndSign.length; i++) {
     });
 }
 
+//Animacion para los botones 
 function buttonAnimation(button) {
     
     var login = document.querySelector('.login');
@@ -103,7 +124,7 @@ function buttonAnimation(button) {
 }
 
 var buttonEnter = document.querySelector('.validate');
-
+//En esta parte decidimos si el usuarios quiere un inicio de sesion o rehistrar un usuario
 try {
     buttonEnter.addEventListener('click', function() {
         console.log(buttonStatus);
@@ -120,7 +141,7 @@ try {
     
 }
 
-
+//En esta parte mandamos el correo y la contraseña a validar para hacer un inicio de sesión
 async function LoginAccount(email, pass) {
     try {
         signInWithEmailAndPassword(auth,email,pass);
@@ -128,7 +149,7 @@ async function LoginAccount(email, pass) {
         alert(error);
     }
 }
-
+//En esta parte registramos un correo y una contraseña para nuevo usuario
 async function RegisterAcount(email, pass) {
     console.log(email);
     try {

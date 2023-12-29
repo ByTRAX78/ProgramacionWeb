@@ -127,7 +127,6 @@ function SeccionRespuestas(doc) {
   //Seccion donde se podran econtrara el boton para enviar la respuesta
   var enviarResponder = document.createElement('div')
   var btnResponder = document.createElement('button');
-  var btnBorrarPregunta = document.createElement('button');
 
   
   dRespuestas.classList.add('respuestas');
@@ -140,18 +139,24 @@ function SeccionRespuestas(doc) {
   txtRespuesta.classList.add('resp');
   enviarResponder.classList.add('postear');
   btnResponder.classList.add('responder');
-  btnBorrarPregunta.classList.add('bPregunta');
 
   //Funcion para obtener las respuestas que esten asociadas al post
   ObtenerRespuestas(doc, postsRespuesta);
   
   secRespuesta.appendChild(txtRespuesta);
   secionRespuesta.appendChild(secRespuesta);
+  
+  if (doc.data().nombreUsuario == user.displayName) {
+    
+    var btnBorrarPregunta = document.createElement('button');
+    btnBorrarPregunta.classList.add('bPregunta');
+    btnBorrarPregunta.textContent = 'Borrar'
+    enviarResponder.appendChild(btnBorrarPregunta);
+  }
+
 
   btnResponder.textContent = 'Responder';
-  btnBorrarPregunta.textContent = 'Borrar'
   enviarResponder.appendChild(btnResponder);
-  enviarResponder.appendChild(btnBorrarPregunta);
   secionRespuesta.appendChild(enviarResponder);
 
   dRespuestas.appendChild(secionRespuesta);

@@ -1,3 +1,6 @@
+import { initAuthStateListener } from "./app/auth.js";
+import { Out } from "./app/logout.js";
+
 var aOtherFunctions = document.getElementsByClassName('separacion');
 
 var contenedorIframe = document.getElementById('frame');
@@ -20,6 +23,7 @@ var overlay = document.getElementById('overlay');
 var frameLogin = document.createElement('iframe');
 //Lo ocultamos para que quede en espera de que el usuario lo requiera
 overlay.style.visibility = 'hidden';
+
 //Evento en espera del click del boton de login
 btnLogin.addEventListener('click', function name() {
 
@@ -38,6 +42,8 @@ btnLogin.addEventListener('click', function name() {
     overlay.appendChild(frameLogin);
     //Y lo volvemos visible
     overlay.style.visibility = 'visible'
+
+    
     //Ponemos un evento en espera de que el usuaior quiera cerra la ventana
     btnSalir.addEventListener('click', function name() {
 
@@ -68,13 +74,30 @@ for (let i = 0; i < aOtherFunctions.length; i++) {
     });
 }
 
-frameLogin.onload = function name() {
-    
-    //Obtenemos elementos del frame de registro e inicio de sesion
-    //Obtenemos el boton para iniciar sesión con google
-    var iframeDoc = frameLogin.contentDocument || frameLogin.contentWindow.document;
-    var btnGoogle = iframeDoc.querySelector('.Google');
-    
+initAuthStateListener(user => {
+    if (user) {
+        var imgUser = document.createElement('img');
+        imgUser.src = user.photoURL;
+        console.log(user.photoURL);
 
+        btnLogin.classList.remove('Login');
+        btnLogin.classList.add('imgUsuario');
+        imgUser.classList.add('imgUsuario');
 
-}           
+        btnLogin.textContent = '';
+        btnLogin.appendChild(imgUser);
+
+        var btnSalir = document.createElement('button');
+        btnSalir.textContent = 'Salir';
+
+        var navBar = document.querySelector('.BarraNav');
+        navBar.appendChild(btnSalir);
+
+        btnSalir.addEventListener('click', function name() {
+            Out();
+        })
+    } else {
+
+    }
+});
+

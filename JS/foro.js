@@ -1,11 +1,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 //import { db } from '../JS/Authentication.js';
 import { addDoc, collection, Timestamp, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { log } from "mathjs";
+import { initAuthStateListener } from "./app/auth.js";
 
 //Datos del logeo y de la base de datos de firebase
-const auth = window.firebaseAuth;
-const db = window.firebaseAuth;
-const user = JSON.parse(localStorage.getItem('user'));
+
+initAuthStateListener(user => {
+    if (user) {
+        var photo = user.photoURL;
+    } else {
+
+    }
+});
 
 //Imagen de perfil del usuario actual
 var imgPerfil = document.querySelectorAll('.perfil');
@@ -16,9 +23,9 @@ var txtResp = document.querySelectorAll('.resp');
 
 for (let i = 0; i < imgPerfil.length; i++) {
     //POnemos  la foto de perfil del usuario en donde corresponda
-    imgPerfil[i].src = user.photoURL;
+    imgPerfil[i].src = photo;
 }
-imgPerfil.src = user.photoURL;
+imgPerfil.src = photo;
 
 let date = new Date();  
 var pregunta = document.querySelector('.pre')
@@ -45,4 +52,3 @@ btnEnviar.addEventListener('click', async function name() {
     }
 });
 
-export { imgPerfil };

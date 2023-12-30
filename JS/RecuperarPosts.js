@@ -1,4 +1,5 @@
-import { addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";    
+import { addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";    7
+import { user } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 import { auth } from "./Authentication.js"
 import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.js";
 //Varaibles con datos de la base de datos de firebas
@@ -8,7 +9,7 @@ var posts = document.querySelector("#posts");
 var cResp = [];
 
 const querySnapshot = await getDocs(collection(db, "posts"));
-const user = JSON.parse(localStorage.getItem('user'));
+//const user = JSON.parse(localStorage.getItem('user'));
 
 console.log(user);
 
@@ -62,19 +63,22 @@ var j = 0;
 for (let i = 0; i  < btnResponder.length;i++) {
   btnResponder[i].addEventListener('click', async function name() {
       
-    try {
-      const docRes = await addDoc(collection(db, 'respuestas'), {
-        fecha: date.toISOString(),
-        nombreUsuario: user.displayName,
-        imgUsuario: user.photoURL,
-        respuesta: txtResp[i].value,
-        idPregunta: idPost[i]
-      });
-    } catch (error) {
-      console.log(error);
+    if (txtResp[i].value.trim() !== '') {
+      try {
+        const docRes = await addDoc(collection(db, 'respuestas'), {
+          fecha: date.toISOString(),
+          nombreUsuario: user.displayName,
+          imgUsuario: user.photoURL,
+          respuesta: txtResp[i].value,
+          idPregunta: idPost[i]
+        });
+      } catch (error) {
+        console.log(error);
+      }
+      txtResp[i].value = '';
+      alert('Tu respuesta se envio');
     }
-    txtResp[i].value = '';
-    alert('Tu respuesta se envio');
+    
   });
 }
 

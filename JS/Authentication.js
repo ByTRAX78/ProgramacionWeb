@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
+        import { user, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,11 +18,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
         };
       
         // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
+        
+        export const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
-        const auth = getAuth(app);
+        export const auth = getAuth(app);
         const provider = new GoogleAuthProvider(app);
-        const db = getFirestore(app);
+        export const db = getFirestore(app);
 
         window.firebaseAuth = auth;
         window.firebaseAuth = db;

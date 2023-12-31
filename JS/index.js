@@ -1,6 +1,11 @@
 import { initAuthStateListener } from "./app/auth.js";
 import { Out } from "./app/logout.js";
 
+function Salir() {
+    
+    Out()
+}
+
 var aOtherFunctions = document.getElementsByClassName('separacion');
 
 var contenedorIframe = document.getElementById('frame');
@@ -57,6 +62,7 @@ btnLogin.addEventListener('click', function name() {
 });
 
 
+
 //Evento para los botones de la navbar y poner la pagian web requerida
 for (let i = 0; i < aOtherFunctions.length; i++) {
     aOtherFunctions[i].addEventListener('click', function name(params) {
@@ -78,24 +84,35 @@ initAuthStateListener(user => {
     if (user) {
         var imgUser = document.createElement('img');
         imgUser.src = user.photoURL;
-        console.log(user.photoURL);
-
-        btnLogin.classList.remove('Login');
-        btnLogin.classList.add('imgUsuario');
         imgUser.classList.add('imgUsuario');
 
-        btnLogin.textContent = '';
-        btnLogin.appendChild(imgUser);
+        var conterLogin = document.querySelector('.ConterLogin');
+        conterLogin.removeChild(btnLogin);
 
-        var btnSalir = document.createElement('button');
-        btnSalir.textContent = 'Salir';
+        var btnWithLogin = document.createElement('button');
+        btnWithLogin.classList.add('imgUsuario');
 
-        var navBar = document.querySelector('.BarraNav');
-        navBar.appendChild(btnSalir);
+        btnWithLogin.appendChild(imgUser);
+        conterLogin.appendChild(btnWithLogin);
+
+        overlay.style.visibility = 'hidden';
+
+        btnWithLogin.addEventListener('click', function name() {
+            var MenuWithLogin = document.querySelector('.MenuWithLogin');
+            MenuWithLogin.classList.toggle('hidden');
+            
+        })
+
+        var btnSalir = document.querySelector('.opcions');
 
         btnSalir.addEventListener('click', function name() {
+            var MenuWithLogin = document.querySelector('.MenuWithLogin');
+            MenuWithLogin.classList.add('hidden');
+            conterLogin.removeChild(btnWithLogin);
+            conterLogin.appendChild(btnLogin);
             Out();
-        })
+        });
+
     } else {
 
     }

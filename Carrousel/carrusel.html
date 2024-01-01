@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>3D Carousel</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=1024">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> -->
+    <link rel="stylesheet" href="css/carrusel.css">                                                                         
+    <link rel="shortcut icon" href="#" /> 
+</head>
+<body>
+
+
+<!-- DESDE AQUI EMPIEZA EL CARRUCEL DE IMAGENES-->
+<div class="slider">
+    <div class="wrapper">
+        <!-- ESTE ES EL PRIMER ELEMENTO -->                                                                                   <!-- ES LO MISMO PARA TODOS LOS ELEMENTOS -->
+        <div style="background-image: url('img/Metodos/Newton.png')" class="item item1 active">                               <!-- LA IMAGEN A USAR -->
+            <div class="item__info">
+                <p class="item__year" style="color:rgb(191, 157, 245)"><span>Metodo...</span></p>                           <!-- COLOR Y TEXTO 1 -->
+                <p class="item__name" style="color:rgb(93, 171, 190)"><span>DE NEWTON</span></p>                            <!-- COLOR Y TEXTO 2 -->
+                <p class="item__year" style="color:rgb(191, 157, 245)"><span>Don´t</span></p>                               <!-- COLOR Y TEXTO 3 -->
+                <a href="../DESCARGAS/ProgramacionWeb-main/HTML/frame.html" class="btn"><span>Calcular</span></a>             <!-- BOTON CON DIRECCIÓN -->
+            </div>
+        </div>
+        <!-- ESTE ES EL SEGUNDO ELEMENTO -->
+        <div style="background-image: url('img/Metodos/Gauss.png')" class="item item2">
+            <div class="item__info">
+                <p class="item__year" style="color:rgb(247, 190, 149)"><span>Metodo...</span></p>
+                <p class="item__name" style="color:rgb(226, 117, 28)"><span>DE GAUSS</span></p>
+                <a href="../DESCARGAS/ProgramacionWeb-main/HTML/frame.html" class="btn"><span>Calcular</span></a>
+            </div>
+        </div>
+        <!-- ESTE ES EL TERCER ELEMENTO -->
+        <div style="background-image: url('img/Metodos/biseccion.png')" class="item item3">
+            <div class="item__info">
+                <p class="item__year" style="color:rgb(178, 241, 231)"><span>Metodo...</span></p>
+                <p class="item__name" style="color:rgb(55, 182, 129)"><span>DE BISECCIÓN</span></p>
+                <p class="item__year" style="color:rgb(178, 241, 231)"><span>Be</span></p>
+                <a href="../DESCARGAS/ProgramacionWeb-main/HTML/frame.html" class="btn"><span>Calcular</span></a>
+            </div>
+        </div>
+        <!-- ESTE ES EL CUARTO ELEMENTO -->
+        <div style="background-image: url('img/Metodos/secantes.png')" class="item item4">
+            <div class="item__info">
+                <p class="item__year" style="color:rgb(207, 178, 241)"><span>Metodo...</span></p>
+                <p class="item__name" style="color:rgb(135, 55, 182)"><span>DE SECANTES</span></p>
+                <a href="../DESCARGAS/ProgramacionWeb-main/HTML/frame.html" class="btn"><span>Calcular</span></a>
+            </div>
+        </div>
+        <!-- ESTE ES EL QUINTO ELEMENTO -->
+        <div style="background-image: url('img/Metodos/falsa.jpg')" class="item item5">
+            <div class="item__info">
+                <p class="item__year" style="color:rgb(178, 190, 241)"><span>Metodo...</span></p>
+                <p class="item__name" style="color:rgb(57, 55, 182)"><span>DE FALSA POSICIÓN</span></p>
+                <p class="item__year" style="color:rgb(178, 190, 241)"><span>Alone</span></p>
+                <a href="../DESCARGAS/ProgramacionWeb-main/HTML/frame.html" class="btn"><span>Calcular</span></a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="arrow arrow-next"></div>                    <!-- FLECHA DERECHA -->
+    <div class="arrow arrow-prev"></div>                    <!-- FLECHA IZQUIERDA -->
+</div>
+
+<script src="js/carrucel_log.js"></script>                  <!-- LOGICA DEL CARRUCEL (PARA QUE SE MUEVA) -->
+</body>
+</html>

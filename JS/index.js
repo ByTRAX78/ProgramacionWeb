@@ -68,7 +68,7 @@ for (let i = 0; i < aOtherFunctions.length; i++) {
     aOtherFunctions[i].addEventListener('click', function name(params) {
         
         if (i == 0) {
-            iframe.src = '../HTML/index.html';
+            iframe.src = '../HTML/Index.html';
         } else if (i == 1) {
             iframe.src = '../HTML/Abautus.html';
         } else if (i == 2) {
@@ -89,7 +89,7 @@ initAuthStateListener(user => {
         var conterLogin = document.querySelector('.ConterLogin');
         conterLogin.removeChild(btnLogin);
 
-        var btnWithLogin = document.createElement('button');
+        var btnWithLogin = document.querySelector('.btnMenu')
         btnWithLogin.classList.add('imgUsuario');
 
         btnWithLogin.appendChild(imgUser);
@@ -117,4 +117,3 @@ initAuthStateListener(user => {
 
     }
 });
-

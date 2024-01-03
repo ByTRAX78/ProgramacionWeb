@@ -3,20 +3,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/foro.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>
-    <div class="escribir-post">
-        <div class="usuario">
-            <img class="perfil" src="" alt="">
-        </div>
-        <div class="pregunta">
-            <textarea class="pre" name="" id="" cols="30" rows="10"></textarea>
-        </div>
-        <div class="postear">
-            <button class="enviar">Enviar</button>
+    <div class="flex">
+        <div class="escribir-post p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="usuario">
+                <img class="perfil" src="" alt="">
+            </div>
+            <div class="pregunta ">
+                <textarea id="message" rows="4" class="pre block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-
+                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+            </div>
+            <div class="postear">
+                <button type="button" class="flex enviar text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4
+                 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+                 me-2 mb-2">
+                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 16">
+                    <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z"/>
+                </svg>
+                </button>
+            </div>
         </div>
     </div>
+    
     <div id="posts">
         
         

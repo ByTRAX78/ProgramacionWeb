@@ -6,7 +6,8 @@ export function initAuthStateListener(callback) {
         
         const uid = user.uid;
         if (user) {
-            
+          console.log(auth);
+            console.log(user);
         } else {
             console.log('Se salio');
         }

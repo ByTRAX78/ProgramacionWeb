@@ -2,18 +2,23 @@ import { collection, getDocs, doc, getDoc} from "https://www.gstatic.com/firebas
 import { auth, db } from './app/firebase.js';
 import { mostrarPosts } from "./RecuperarPosts.js";
 import { initAuthStateListener } from "./app/auth.js";
+import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.js";
 
 console.log(db);
 
-var idsRespuestas = [];
-var idsPreguntas = [];
+export var idsRespuestas = [];
+export var idsPreguntas = [];                  
 
 const obtenerRespuestas = async (docFather) => {
+    idsPreguntas.push(docFather.id)
     const collectionRespuestas = await getDocs(collection(db, 'posts', docFather.id, 'respuestas'));
     const postWithAnswer = [docFather];
 
     collectionRespuestas.forEach(docs => {
         postWithAnswer.push(docs);
+        var arr = [];
+        arr.push(docFather.id,docs.id);
+        idsRespuestas.push(arr);
     });
 
     return postWithAnswer;
@@ -57,7 +62,8 @@ var btnBorrarPregunta = document.querySelectorAll('.bPregunta');
 for (let i = 0; i < btnBorrarPregunta.length; i++) {
     
     btnBorrarPregunta[i].addEventListener('click', function name() {
-        borrarPregunta(btnBorrarPregunta[i].value);
+        borrarPregunta(idsPreguntas[i], i);
+        btnBorrarPregunta = document.querySelectorAll('.bPregunta');
     })
 }
 
@@ -66,7 +72,11 @@ var btnBorrarRespuesta = document.querySelectorAll('.borrar');
 for (let i = 0; i < btnBorrarRespuesta.length; i++) {
     
     btnBorrarRespuesta[i].addEventListener('click', function name() {
-        
-        borrarRespuesta(btnBorrarRespuesta[i].value);
+        console.log(btnBorrarRespuesta.length);
+        borrarRespuesta(idsRespuestas[i], i);
+        var padre = btnBorrarRespuesta[i].parentNode;
+        padre.remove();
+        btnBorrarRespuesta[i].remove();
+        console.log(document.querySelectorAll('.borrar'));
     })
 }

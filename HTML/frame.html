@@ -5,6 +5,7 @@
   <title>Principal</title>
 <link rel="stylesheet" href="../CSS/Index.css">
 <link rel="stylesheet" href="../dist/output.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
 <style>
     body {
         display: flex;
@@ -24,14 +25,37 @@
     <div id="overlay"></div>
     
     <div class="BarraNav abajo">
-        <div class = "flex flex-col-reverse ConterLogin  ">
-            <button class="Login">Log in</button>
-            <div class="hidden MenuWithLogin">
-                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" onclick="Out()">Opción 1</a>
-                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 2</a>
-                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 opcions" >Opción 3</a>
+        <div class = " ConterLogin  ">
+            <button class="Login ">Log in</button>
+            <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="btnMenu" type="button">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            <div id="dropdownDivider" class="MenuWithLogin z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class=" py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
+                <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nose</a>
+                </li>
+                <li>
+                    <a href="./ConfigUser.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Configuracion</a>
+                </li>
+                <li>
+                    <a href="#" class="opcions block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Salir</a>
+                </li>
+                </ul>
+                <div class="py-2">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
+                </div>
             </div>
+            
         </div>
+    
+            
+            <!-- Dropdown menu -->
+            
+    
+            
+
         <div class="Options">
         <a href="#" class="separacion">
             <p>Home</p>
@@ -44,8 +68,9 @@
         </a>
         </div>
     </div>
-    <div id="frame" class="abajo">
-    </div>
+    <div id="frame" class="abajo"> </div>
+    
     <script src="../JS/index.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </body>
 </html>

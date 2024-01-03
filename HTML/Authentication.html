@@ -14,11 +14,13 @@
                     <button class="a login buttonColor">Login</button>
                     <button class="a sign buttonTransparent">Sign In</button>
                 </div>
-                <div class="forms">
+                <div class="forms flex flex-col">
+                    <input type="text" class="name" value="" placeholder="user name">
                     <input class="email" value="" type="email" placeholder="email">
                     <input class="pass" value="" type="password" placeholder="password">
                 </div>
                 <div class="buttonEnter">
+                    <button class="">Recuperar contraseña</button>
                     <button class="validate">Enter</button>
                 </div>
                 <div class="other">
@@ -29,6 +31,8 @@
             </div>
         </div>
       </section>
+      <script src="../JS/Authentication.js" charset="UTF-8" type="module"></script>
       <script src="../JS/app/googleLogin.js" charset="UTF-8" type="module"></script>
+      <script src="../JS/app/EmailProvider.js" charset="UTF-8" type="module"></script>
 </body>
 </html>

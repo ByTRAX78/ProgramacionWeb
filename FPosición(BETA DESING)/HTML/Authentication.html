@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Authentication.css">
+    <title>Document</title>
+</head>
+<body>
+      <section id="Authentication">
+        <div id="window">
+            <div id="box">
+                <div class="loginSignIn">
+                    <button class="a login buttonColor">Login</button>
+                    <button class="a sign buttonTransparent">Sign In</button>
+                </div>
+                <div class="forms">
+                    <input class="email" value="" type="email" placeholder="email">
+                    <input class="pass" value="" type="password" placeholder="password">
+                </div>
+                <div class="buttonEnter">
+                    <button class="validate">Enter</button>
+                </div>
+                <div class="other">
+                    <button>Google</button>
+                    <button>Facebook</button>
+                    <button>GitHub</button>
+                </div>
+            </div>
+        </div>
+      </section>
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBVUYFFYDL1SS1b1v-WOcxf4rqPnyJWxu8",
+          authDomain: "waaaaghammer-f5fc4.firebaseapp.com",
+          projectId: "waaaaghammer-f5fc4",
+          storageBucket: "waaaaghammer-f5fc4.appspot.com",
+          messagingSenderId: "1087839271573",
+          appId: "1:1087839271573:web:b638a36ba56787cf07f99c",
+          measurementId: "G-W1YMYPBP0G"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        window.firebaseAuth = auth;
+      </script>
+      <script src="../JS/Authentication.js" charset="UTF-8" type="module"></script>
+</body>
+</html>

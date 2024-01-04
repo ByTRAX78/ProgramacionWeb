@@ -4,22 +4,41 @@ import { initAuthStateListener } from "./app/auth.js";
 import { db, auth } from "./app/firebase.js";
 import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.js";
 import { idsPreguntas, idsRespuestas } from "./RecuperarColelctions.js";
-import {  mostrarPosts } from "./RecuperarPosts.js";
+import {  ObtenerRespuestas, mostrarPosts } from "./RecuperarPosts.js";
 
 //Datos del logeo y de la base de datos de firebase
 
 var btnEnviar = document.querySelector('.enviar');
 var btnResponder = document.querySelectorAll('.responder'); 
 var txtResp = document.querySelectorAll('.resp');
-
 let date = new Date();  
-var pregunta = document.querySelector('.pre')
+var pregunta = document.querySelector('.pre');
+
+var cla = [
+    'text-white', 
+    'bg-gradient-to-r',
+    'from-cyan-500', 
+    'to-blue-500',
+    'hover:bg-gradient-to-bl', 
+    'focus:ring-4',
+    'focus:outline-none',
+    'focus:ring-cyan-300', 
+    'dark:focus:ring-cyan-800',
+    'font-medium',
+    'rounded-lg', 
+    'text-sm', 
+    'px-5',
+    'py-2.5', 
+    'text-center', 
+    'me-2', 
+    'mb-2'];
 
 initAuthStateListener(user => {
 
     if (user) {
 
-        
+            
+    console.log(txtResp);
 
         var photo = user.photoURL;
         btnEnviar.addEventListener('click', async function name() {
@@ -71,6 +90,8 @@ initAuthStateListener(user => {
                             imgUser: user.photoURL,
                             respuesta: txtResp[i].value
                         });
+
+                        const docSnap = await getDoc(docRes);
                         
                         var datosUsuario = document.createElement('div');
                         datosUsuario.classList.add('usuario', 'answer');
@@ -79,21 +100,34 @@ initAuthStateListener(user => {
                         var imgUsuario = document.createElement('img');
                         var respuesta = document.createElement('p');
 
-                        nombreUsuario.textContent = user.displayName;
-                        imgUsuario.src = user.photoURL;
-                        respuesta.textContent = txtResp[i].value;
+                        nombreUsuario.textContent = docSnap.data().nombreUser;
+                        imgUsuario.src = docSnap.data().imgUser;
+                        respuesta.textContent = docSnap.data().respuesta;
+                        respuesta.classList.add('textRespuesta');
 
                         datosUsuario.appendChild(imgUsuario);
                         datosUsuario.appendChild(nombreUsuario);
                         datosUsuario.appendChild(respuesta);
 
-                        if (auth.currentUser.displayName == user.currentUser) {
-                            
-                            var btnErase = document.createElement('button');
-                            btnErase.textContent = 'Borrar';
-                            btnErase.classList.add('borrar');
-                            datosUsuario.appendChild(btnErase);
-                        }
+                        var btnErase = document.createElement('button');
+                        btnErase.textContent = 'Borrar';
+                        btnErase.classList.add(
+                        'borrar',
+                        ...cla
+                        );
+                        btnErase.setAttribute('id-document', docSnap.id)
+                        btnErase.setAttribute('id-father', idsPreguntas[i])
+                        var btnMod = document.createElement('button');
+                        btnMod.textContent = 'Modificar';
+                        btnMod.classList.add(
+                        'modRespuesta',
+                        ...cla
+                        );
+                        btnMod.setAttribute('id-document', docSnap.id)
+                        btnMod.setAttribute('id-father', idsPreguntas[i])
+                        datosUsuario.appendChild(btnMod);
+                        datosUsuario.appendChild(btnErase);
+
                         answer[i].appendChild(datosUsuario);
 
                     } catch (error) {
@@ -106,7 +140,7 @@ initAuthStateListener(user => {
 
     } else {
         
-        alert('No puedes postear y responder no estas logeado')
+       
     }
 });
 
@@ -116,10 +150,8 @@ initAuthStateListener(user => {
 initAuthStateListener(user => {
 
     if (user) {
-        console.log(imgPerfil);
         imgPerfil.src = user.photoURL;
     } else {
-        alert('No puedes postear y responder no estas logeado')
     }
 });
 

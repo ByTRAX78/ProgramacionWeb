@@ -2,6 +2,25 @@ import { addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/
 import { auth, db } from './app/firebase.js';
 import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.js";
 
+  var cla = [
+    'text-white', 
+    'bg-gradient-to-r',
+    'from-cyan-500', 
+    'to-blue-500',
+    'hover:bg-gradient-to-bl', 
+    'focus:ring-4',
+    'focus:outline-none',
+    'focus:ring-cyan-300', 
+    'dark:focus:ring-cyan-800',
+    'font-medium',
+    'rounded-lg', 
+    'text-sm', 
+    'px-5',
+    'py-2.5', 
+    'text-center', 
+    'me-2', 
+    'mb-2'];
+
   export function mostrarPosts(posts) {
 
     var post = document.createElement('div');
@@ -15,6 +34,8 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
       'dark:bg-gray-800', 
       'dark:border-gray-700'
       );
+
+      console.log(posts);
     
     post.appendChild(SeccionUsuario(posts[0]));
     post.appendChild(SeccionPregunta(posts[0]));
@@ -61,6 +82,7 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
     usuarioPost.appendChild(pUsuario);
     usuarioPost.appendChild(btnConfig);
     usuarioPost.appendChild(imgUser);
+    btnConfig.setAttribute('data-dropdown-toggle', 'menuActions');
   
     return usuarioPost;
   }
@@ -70,7 +92,7 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
     var postsPregunta = document.createElement('div');
     var pPregunta = document.createElement('p');
   
-    postsPregunta.classList.add("pregunta");
+    postsPregunta.classList.add("preguntaPost");
   
     pPregunta.textContent = doc.data().pregunta;
     postsPregunta.appendChild(pPregunta);
@@ -97,7 +119,9 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
     //Seccion donde se podran econtrara el boton para enviar la respuesta
     var enviarResponder = document.createElement('div')
     var btnResponder = document.createElement('button');
-    btnResponder.value = doc[0].id;
+    
+    console.log(doc[0].id);
+    btnResponder.setAttribute('id-document', doc[0].id);
     
     dRespuestas.classList.add(
       'respuestas',
@@ -132,40 +156,36 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
       'dark:focus:border-blue-500'
       );
     enviarResponder.classList.add('postear');
+
     btnResponder.classList.add(
       'responder',
-      'text-white', 
-      'bg-gradient-to-r',
-      'from-cyan-500', 
-      'to-blue-500',
-      'hover:bg-gradient-to-bl', 
-      'focus:ring-4',
-      'focus:outline-none',
-      'focus:ring-cyan-300', 
-      'dark:focus:ring-cyan-800',
-      'font-medium',
-      'rounded-lg', 
-      'text-sm', 
-      'px-5',
-      'py-2.5', 
-      'text-center', 
-      'me-2', 
-      'mb-2'
+      ...cla
       );
   
     //Funcion para obtener las respuestas que esten asociadas al post
     ObtenerRespuestas(doc, postsRespuesta);
-    //ObtenerRespuestas(doc, postsRespuesta);
-    
     secRespuesta.appendChild(txtRespuesta);
     secionRespuesta.appendChild(secRespuesta);
     
     if (doc[0].data().nombreUser == auth.currentUser.displayName) {
       
       var btnBorrarPregunta = document.createElement('button');
+      btnBorrarPregunta.setAttribute('id-document', doc[0].id);
       btnBorrarPregunta.classList.add('bPregunta');
       btnBorrarPregunta.textContent = 'Borrar'
       enviarResponder.appendChild(btnBorrarPregunta);
+      btnBorrarPregunta.classList.add(
+        ...cla
+        );
+
+      var btnModificarPregunta = document.createElement('button');
+      btnModificarPregunta.setAttribute('id-document', doc[0].id)
+      btnModificarPregunta.textContent = 'Modificar'
+      enviarResponder.appendChild(btnModificarPregunta);
+      btnModificarPregunta.classList.add(
+        'modificar',
+        ...cla
+        );
     }
   
   
@@ -181,8 +201,11 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
 
   async function ObtenerRespuestas(doc, usuarioResp) {
 
+    console.log(doc, usuarioResp);
 
     var lon = doc.length - 1;
+
+    console.log(doc.length);
 
       for (let i = lon; i >= 1; i--) {
 
@@ -196,6 +219,7 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
           nombreUsuario.textContent = doc[i].data().nombreUser;
           imgUsuario.src = doc[i].data().imgUser;
           respuesta.textContent = doc[i].data().respuesta;
+          respuesta.classList.add('textRespuesta');
 
           
 
@@ -207,7 +231,23 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
             
             var btnErase = document.createElement('button');
             btnErase.textContent = 'Borrar';
-            btnErase.classList.add('borrar');
+            btnErase.classList.add(
+              'borrar',
+              ...cla
+              );
+            btnErase.setAttribute('id-document', doc[i].id)
+            btnErase.setAttribute('id-father', doc[0].id)
+
+            var btnMod = document.createElement('button');
+            btnMod.textContent = 'Modificar';
+            btnMod.classList.add(
+              'modRespuesta',
+              ...cla
+            );
+            btnMod.setAttribute('id-document', doc[i].id)
+            btnMod.setAttribute('id-father', doc[0].id)
+            
+            datosUsuario.appendChild(btnMod);
             datosUsuario.appendChild(btnErase);
           }
 
@@ -216,6 +256,11 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
       }
 
     return usuarioResp;
+    }
+
+
+    export {
+      ObtenerRespuestas
     }
 
 

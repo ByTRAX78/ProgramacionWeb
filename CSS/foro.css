@@ -1,24 +1,34 @@
+body {
+}
 
+/*#posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}*/
 
 #posts .post {
     display: inline-block;
-    width: 49vw;
+    width: 49.7%;
     margin-bottom: 10px;
     color: aliceblue;
-}
-
-.left {
-    float: left;
 }
 
 .right {
     float: right;
 }
 
+.left {
+    float: left;
+}
+
 .post {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 3fr;
+    width: 700px;
+    height: auto;
 }
 
 .usuario {
@@ -37,6 +47,10 @@ img {
 
 .usuario p {
     text-align: left;
+}
+
+.btnConfig {
+    grid-area: 1/5/2/5;
 }
 
 .pregunta {
@@ -113,6 +127,3 @@ input {
     background-color: antiquewhite;
 }
 
-.btnConfig {
-    margin-right: 0px;
-}

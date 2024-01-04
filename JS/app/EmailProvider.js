@@ -26,7 +26,6 @@ function SignInUsers(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then((useCredential) => {
             const user = useCredential.user;
-            console.log(useCredential);
         })
         .catch((error) => {
             console.log(error.code);

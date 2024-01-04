@@ -2,9 +2,7 @@ import { collection, getDocs, doc, getDoc} from "https://www.gstatic.com/firebas
 import { auth, db } from './app/firebase.js';
 import { mostrarPosts } from "./RecuperarPosts.js";
 import { initAuthStateListener } from "./app/auth.js";
-import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.js";
 
-console.log(db);
 
 export var idsRespuestas = [];
 export var idsPreguntas = [];                  
@@ -42,7 +40,7 @@ const post = await obtenerDatos();
 
 for (let i = 0; i < post.length; i++) {
     
-    var divpost = mostrarPosts(post[i]);
+    var divpost = await mostrarPosts(post[i]);
 
     if (i % 2 == 0) {
         divpost.classList.add('left')
@@ -57,26 +55,9 @@ import('./foro.js').then(module => {
 
 });
 
-var btnBorrarPregunta = document.querySelectorAll('.bPregunta');
+import('./FuncionalidadPosts.js').then(module => {
 
-for (let i = 0; i < btnBorrarPregunta.length; i++) {
-    
-    btnBorrarPregunta[i].addEventListener('click', function name() {
-        borrarPregunta(idsPreguntas[i], i);
-        btnBorrarPregunta = document.querySelectorAll('.bPregunta');
-    })
-}
+});
 
-var btnBorrarRespuesta = document.querySelectorAll('.borrar');
 
-for (let i = 0; i < btnBorrarRespuesta.length; i++) {
-    
-    btnBorrarRespuesta[i].addEventListener('click', function name() {
-        console.log(btnBorrarRespuesta.length);
-        borrarRespuesta(idsRespuestas[i], i);
-        var padre = btnBorrarRespuesta[i].parentNode;
-        padre.remove();
-        btnBorrarRespuesta[i].remove();
-        console.log(document.querySelectorAll('.borrar'));
-    })
-}
+

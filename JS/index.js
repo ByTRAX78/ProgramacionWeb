@@ -6,6 +6,9 @@ function Salir() {
     Out()
 }
 
+var imgUsuario = document.querySelectorAll('.imgUsuario');
+var btnMenu = document.querySelector('.btnMenu');
+
 var aOtherFunctions = document.getElementsByClassName('separacion');
 
 var contenedorIframe = document.getElementById('frame');
@@ -52,7 +55,6 @@ btnLogin.addEventListener('click', function name() {
     //Ponemos un evento en espera de que el usuaior quiera cerra la ventana
     btnSalir.addEventListener('click', function name() {
 
-        console.log(document.querySelector('.Google'));
         //Vaciamos el overlay y lo volvemos invisible
         overlay.innerHTML = '';
         overlay.style.visibility = 'hidden';
@@ -82,34 +84,21 @@ for (let i = 0; i < aOtherFunctions.length; i++) {
 
 initAuthStateListener(user => {
     if (user) {
-        var imgUser = document.createElement('img');
-        imgUser.src = user.photoURL;
-        imgUser.classList.add('imgUsuario');
+        btnMenu.style.visibility = 'visible'
+        imgUsuario[1].src = user.photoURL;
 
         var conterLogin = document.querySelector('.ConterLogin');
-        conterLogin.removeChild(btnLogin);
-
-        var btnWithLogin = document.querySelector('.btnMenu')
-        btnWithLogin.classList.add('imgUsuario');
-
-        btnWithLogin.appendChild(imgUser);
-        conterLogin.appendChild(btnWithLogin);
+        conterLogin.removeChild(btnLogin);    
 
         overlay.style.visibility = 'hidden';
-
-        btnWithLogin.addEventListener('click', function name() {
-            var MenuWithLogin = document.querySelector('.MenuWithLogin');
-            MenuWithLogin.classList.toggle('hidden');
-            
-        })
 
         var btnSalir = document.querySelector('.opcions');
 
         btnSalir.addEventListener('click', function name() {
             var MenuWithLogin = document.querySelector('.MenuWithLogin');
             MenuWithLogin.classList.add('hidden');
-            conterLogin.removeChild(btnWithLogin);
-            conterLogin.appendChild(btnLogin);
+            btnMenu.style.visibility = 'hidden'
+            conterLogin.appendChild(btnLogin)
             Out();
         });
 

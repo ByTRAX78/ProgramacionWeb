@@ -58,7 +58,7 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
     imgUser.src = doc.data().imgUser;
     pUsuario.textContent = doc.data().nombreUser;
     
-    usuarioPost.appendChild(pUsuario);
+    usuarioPost.appendChild(pUsuario);  
     usuarioPost.appendChild(imgUser);
   
     return usuarioPost;
@@ -133,6 +133,7 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
       'dark:focus:border-blue-500'
       );
     enviarResponder.classList.add('postear');
+    enviarResponder.id = 'postear'
 
     btnResponder.classList.add(
       'responder',

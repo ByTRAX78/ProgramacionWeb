@@ -22,15 +22,6 @@
         grid-template-rows: 3fr;
         height: auto;
     }
-
-    /*.right {
-        float: right;
-    }
-    
-    .left {
-        float: left;
-    }*/
-    
     
     .usuario {
         display: grid;
@@ -81,9 +72,6 @@
     
     .escribir-post img {
         margin: 20px;
-    }
-    
-    input {
     }
     
     .escribir-post > .pregunta {
@@ -195,18 +183,6 @@
         color: white;
         padding-left: 25px;
     }
-    
-    .pregunta {
-    }
-    
-    .respuestas {
-    }
-    
-    .respuestas img {
-    }
-    
-    .respuesta {
-    }
 
     .respuesta .usuario {
         display: grid;
@@ -235,38 +211,12 @@
         grid-area: 15/12/15/17;
     }
     
-    .escribir-post {
-    }
-    
     .escribir-post img {
         margin: 20px;
-    }
-    
-    input {
-    }
-    
-    .escribir-post .pregunta {
-       
-        
-    }
-    
-    .pregunta  textarea {
     }
     
     .postear {
         gap: 10px;
         padding-top: 25px;
-    }
-    
-    .postear button {
-    }
-    
-    .respuesta {
-    }
-
-    .textRespuesta {
-    }
-    
-    .btnErase {
     }
 }

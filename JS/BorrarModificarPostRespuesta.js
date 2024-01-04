@@ -17,7 +17,7 @@ console.log(idRespuesta);
     }
 }
 //Funcion para borrar tus preguntas
-async function borrarPregunta(idPregunta, i) {
+async function borrarPregunta(idPregunta) {
     try {
         //Borramos una pregunta con la funcion
         /*
@@ -41,9 +41,9 @@ async function borrarPregunta(idPregunta, i) {
 
 async function ModificarPost(idPost, pregunta) {
     try {
-
+        
+        console.log(idPost, pregunta);
         const docModificar = doc(db, 'posts' , idPost);
-
         await updateDoc(docModificar, {
             pregunta: pregunta
         });

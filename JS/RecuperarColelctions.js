@@ -57,9 +57,7 @@ import('./foro.js').then(module => {
 
 });
 
-import('./FuncionalidadPosts.js').then(module => {
 
-});
 
 
 

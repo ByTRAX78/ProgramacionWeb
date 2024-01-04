@@ -56,12 +56,7 @@ initAuthStateListener(user => {
                     const docSnap = [];
                     docSnap.push(await getDoc(doc(db,'posts',docRef._key.path.segments[1]))); 
                     var postNuevo = mostrarPosts(docSnap);
-
-                    /*if (i % 2 == 0) {
-                        postNuevo.classList.add('left')
-                    } else {
-                        postNuevo.classList.add('right')
-                    }*/
+                    
                     var posts = document.querySelector("#posts");
                     posts.appendChild(postNuevo );
                 } catch (error) {
@@ -90,6 +85,8 @@ initAuthStateListener(user => {
                             imgUser: user.photoURL,
                             respuesta: txtResp[i].value
                         });
+
+                        txtResp[i].value = '';
 
                         const docSnap = await getDoc(docRes);
                         
@@ -129,6 +126,8 @@ initAuthStateListener(user => {
                         datosUsuario.appendChild(btnErase);
 
                         answer[i].appendChild(datosUsuario);
+
+
 
                     } catch (error) {
                         console.log(error);

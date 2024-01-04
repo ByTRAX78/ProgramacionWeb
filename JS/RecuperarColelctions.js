@@ -38,9 +38,11 @@ var posts = document.querySelector("#posts");
   
 const post = await obtenerDatos();
 
+
 for (let i = 0; i < post.length; i++) {
     
     var divpost = await mostrarPosts(post[i]);
+    
 
     if (i % 2 == 0) {
         divpost.classList.add('left')

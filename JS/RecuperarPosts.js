@@ -50,39 +50,16 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
     var usuarioPost = document.createElement('div');
     var imgUser = document.createElement('img');
     var pUsuario = document.createElement('p');
-    var btnConfig = document.createElement('button');
 
-    usuarioPost.classList.add("usuario");
+    usuarioPost.classList.add(
+      "usuario",
+      );
   
     imgUser.src = doc.data().imgUser;
     pUsuario.textContent = doc.data().nombreUser;
-  
-    btnConfig.classList.add(
-      'text-white', 
-      'bg-gray-800', 
-      'hover:bg-gray-900', 
-      'focus:outline-none', 
-      'focus:ring-4', 
-      'focus:ring-gray-300', 
-      'font-medium', 
-      'rounded-lg', 
-      'text-sm', 
-      'px-5', 
-      'py-2.5', 
-      'me-2', 
-      'mb-2', 
-      'dark:bg-gray-800', 
-      'dark:hover:bg-gray-700',
-      'dark:focus:ring-gray-700', 
-      'dark:border-gray-700',
-      'btnConfig'
-    );
-    btnConfig.textContent = '...'
     
     usuarioPost.appendChild(pUsuario);
-    usuarioPost.appendChild(btnConfig);
     usuarioPost.appendChild(imgUser);
-    btnConfig.setAttribute('data-dropdown-toggle', 'menuActions');
   
     return usuarioPost;
   }
@@ -142,8 +119,8 @@ import { borrarPregunta, borrarRespuesta } from "./BorrarModificarPostRespuesta.
       'p-2.5', 
       'w-full',
       'text-sm', 
-      'text-gray-900', 
-      'bg-gray-50',
+      'text-gray-300', 
+      'bg-black',
       'rounded-lg',
       'border', 
       'border-gray-focus:ring-blue-500',

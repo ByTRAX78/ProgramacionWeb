@@ -10,7 +10,7 @@ export function initAuthStateListener(callback) {
         } else {
         }
       } catch (error) {
-        
+        console.log(error);
       }
         
       

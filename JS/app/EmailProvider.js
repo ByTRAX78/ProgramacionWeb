@@ -27,6 +27,8 @@ function CreateUser(name, email, password) {
 }
 
 function SignInUsers(email, password) {
+    console.log(email, password);
+    console.log(auth);  
     signInWithEmailAndPassword(auth, email, password)
         .then((useCredential) => {
             const user = useCredential.user;

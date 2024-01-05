@@ -37,8 +37,19 @@ overlay.style.visibility = 'hidden';
 btnLogin.addEventListener('click', function name() {
 
     //Creamos un boton para que el usuario pueda salir
-    var btnSalir = document.createElement('button');
-    btnSalir.appendChild
+    var btnSalir = document.createElement('button')
+    btnSalir.classList.add(
+        'btnSalir',
+        'rounded-full',
+        'text-white',
+        'bg-gradient-to-r', 
+        'from-cyan-500', 
+        'to-blue-500',
+        'p-8',
+        'm-8',
+        'text-lg'
+        );
+    btnSalir.textContent = '<'
     //Ponemos la pagina en el frama para que se muestre al usuarios
     frameLogin.src = '../HTML/Authentication.html';
     //La configuramos
@@ -47,7 +58,8 @@ btnLogin.addEventListener('click', function name() {
     frameLogin.frameBorder = '0';
     //Panemos los elementos dentro del overlay para que el ussuaior pueda verlos
     overlay.innerHTML = '';
-    overlay.appendChild(btnSalir);
+    
+    overlay.appendChild(btnSalir)
     overlay.appendChild(frameLogin);
     //Y lo volvemos visible
     overlay.style.visibility = 'visible'

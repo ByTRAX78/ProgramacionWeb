@@ -6,14 +6,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: auto;
 }
 
-.box {
+#box {
     border-radius: 50px;
-}
+    height: auto;
+    }
 
 .hidden {
     display: none;
+}
+
+.buttonEnter {
+    flex-shrink: 0;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .loginSignIn{
@@ -45,15 +53,19 @@
 
 .recuperar {
     width: 100%;
-    height: 80%;
+    height: 100%;
+    flex: 1;
 }
 
 .validate {
     width: 100%;
-    height: 80%;
+    height: 100%;
+    flex: 1;
+    align-items: stretch;
 }
 
 .servicios {
     height: 30px;
     width: 100%;
+    align-items: stretch;
 }

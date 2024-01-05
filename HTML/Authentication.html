@@ -3,36 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+    <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="../CSS/Authentication.css">
     <title>Document</title>
 </head>
 <body>
       <section id="Authentication">
         <div id="window">
-            <div id="box">
-                <div class="loginSignIn">
-                    <button class="a login buttonColor">Login</button>
-                    <button class="a sign buttonTransparent">Sign In</button>
-                </div>
-                <div class="forms flex flex-col">
-                    <input type="text" class="name" value="" placeholder="user name">
-                    <input class="email" value="" type="email" placeholder="email">
-                    <input class="pass" value="" type="password" placeholder="password">
-                </div>
-                <div class="buttonEnter">
-                    <button class="">Recuperar contraseña</button>
-                    <button class="validate">Enter</button>
-                </div>
-                <div class="other">
-                    <button class="Google">Google</button>
-                    <button class="Facebook">Facebook</button>
-                    <button class="GitHub">GitHub</button>
-                </div>
+            <div class="box max-w-sm p-6 bg-black border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+                <form class="forms max-w-md mx-auto">
+                    <div class="loginSignIn">
+                        <button class="a login buttonColor  text-white bg-gradient-to-r from-cyan-500 to-blue-500 
+                        hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 
+                        font-medium text-sm px-5 py-2.5 text-center  me-2 mb-2">Login</button> 
+                        <button class="a sign buttonTransparent  text-white bg-gradient-to-r from-cyan-500 to-blue-500
+                        hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 
+                        font-medium text-sm px-5 py-2.5 text-center me-2 mb-2">Sign In</button>
+                    </div>
+                    <div class=" divName relative z-0 w-full mb-5 group">
+                        <input type="text" class="name block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "/>
+                        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre de Usuario</label>
+                    </div>
+                    <div class="relative z-0 w-full mb-5 group">
+                        <input type="email" name="floating_email" id="floating_email" class="email block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                        <label for="floating_email" class=" peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                    </div>
+                    <div class="relative z-0 w-full mb-5 group">
+                        <input type="password" name="floating_password" id="floating_password" class="pass block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                        <label for="floating_password" class=" peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                    </div>
+                    <div class="grid md:grid-cols-2 md:gap-6">
+                      <div class="relative z-0 w-full mb-5 group">
+                        <button class="recuperar text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4
+                        focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+                        me-2 mb-2">Recuperar contraseña</button>
+                      </div>
+                      <div class="relative z-0 w-full mb-5 group ">
+                        <button class="validate  text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4
+                        focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+                        me-2 mb-2">Enter</button>
+                      </div>
+                     </div>
+                      <div class="relative z-0 w-full mb-5 group ">
+                        <button class="servicios Google  text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4
+                        focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+                        me-2 mb-2">Google</button>
+                    </div>
+                      <div class="relative z-0 w-full mb-5 group ">
+                        <button class="servicios Facebook  text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4
+                        focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+                        me-2 mb-2">Facebook</button>
+                    </div>
+                      <div class="relative z-0 w-full mb-5 group ">
+                        <button class="servicios GitHub  text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4
+                        focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+                        me-2 mb-2">GitHub</button>
+                    </div>
+                    </form>
             </div>
         </div>
       </section>
       <script src="../JS/Authentication.js" charset="UTF-8" type="module"></script>
       <script src="../JS/app/googleLogin.js" charset="UTF-8" type="module"></script>
       <script src="../JS/app/EmailProvider.js" charset="UTF-8" type="module"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </body>
 </html>

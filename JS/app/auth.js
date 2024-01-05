@@ -4,10 +4,15 @@ import { auth } from "./firebase.js";
 export function initAuthStateListener(callback) {
     onAuthStateChanged(auth, (user) => {
         
+      try {
         const uid = user.uid;
         if (user) {
         } else {
         }
+      } catch (error) {
+        
+      }
+        
       
       callback(user);
     });

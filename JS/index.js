@@ -9,6 +9,7 @@ function Salir() {
 var imgUsuario = document.querySelectorAll('.imgUsuario');
 var btnMenu = document.querySelector('.btnMenu');
 
+btnMenu.style.visibility = 'hidden'
 var aOtherFunctions = document.getElementsByClassName('separacion');
 
 var contenedorIframe = document.getElementById('frame');
@@ -37,7 +38,7 @@ btnLogin.addEventListener('click', function name() {
 
     //Creamos un boton para que el usuario pueda salir
     var btnSalir = document.createElement('button');
-    btnSalir.textContent = 'X'
+    btnSalir.appendChild
     //Ponemos la pagina en el frama para que se muestre al usuarios
     frameLogin.src = '../HTML/Authentication.html';
     //La configuramos
@@ -84,6 +85,7 @@ for (let i = 0; i < aOtherFunctions.length; i++) {
 
 initAuthStateListener(user => {
     if (user) {
+        console.log(user);
         btnMenu.style.visibility = 'visible'
         imgUsuario[1].src = user.photoURL;
 
@@ -101,6 +103,16 @@ initAuthStateListener(user => {
             conterLogin.appendChild(btnLogin)
             Out();
         });
+
+        var btnConfig = document.querySelector('.configuracion')
+
+        btnConfig.addEventListener('click', function name() {
+            if (user.providerData[0].providerId !== 'password') {
+                console.log('No se polli');
+            } else {
+                window.location.href = '../HTML/ConfigUser.html';
+            }
+        })
 
     } else {
 

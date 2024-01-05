@@ -8,7 +8,8 @@ var f = [];
 
 ecuacion.addEventListener('input', function name() {
 
-    //Reseteamos los valores cada vez que ingresamos un nuevo caracter a la
+    try {
+        //Reseteamos los valores cada vez que ingresamos un nuevo caracter a la
     //ecuacion
     x = [];
     f = [];
@@ -77,6 +78,11 @@ ecuacion.addEventListener('input', function name() {
 
     //Mandamos los valores de xp, xn y sus funciones a la formula
     formula(xn, xp, fn, fp)
+    } catch (error) {
+        
+    }
+
+    
 
 })
 

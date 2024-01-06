@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PRUEBA</title>
+</head>
+<body>
+    <!-- Enlace a la fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+    <!-- Contenedor principal -->
+    <div class="main">
+
+        <!-- Flechas de desplazamiento izquierda y derecha -->
+        <span class="scroll-left scroll-chevron">❮</span>
+        <span class="scroll-right scroll-chevron">❯</span>
+
+        <!-- Sección del carrusel -->
+        <section class="carousel">
+            <!-- Contenedor de elementos del carrusel -->
+            <div class="carousel__container">
+
+                <!-- Primer elemento del carrusel - Método de Falsa Posición -->
+                <a href="../MetodoFalsa/FPosición(BETA DESING)/HTML/home_page.html" class="carousel-item">
+                    <img class="carousel-item__img" src="images/Falsa.png" alt="Portada_Falsa_Posicion">
+                    <div class="carousel-item__details">
+                        <p class="carousel-item__details--title">METODO DE FALSA POSICIÓN</p>
+                        <p class="carousel-item__details--subtitle">Un método iterativo para encontrar raíces de una función.
+                            <br>Comienza con dos puntos en los cuales la función tiene signos opuestos.
+                            <br>Luego, estima la intersección de la función con el eje x mediante una interpolación lineal.
+                            <br>El nuevo punto de intersección reemplaza uno de los puntos originales, manteniendo la propiedad de tener signos opuestos.
+                            <br><br>Este proceso se repite hasta alcanzar la precisión deseada, y la raíz se encuentra en el intervalo ajustado.</p>
+                        <div class="carousel-item__details--icons">
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Segundo elemento del carrusel - Método de Bisección -->
+                <a href="../MetodoBisección/HTML/home_page.html" class="carousel-item">
+                    <img class="carousel-item__img" src="images/Biseccion.png" alt="Portada_Biseccion">
+                    <div class="carousel-item__details">
+                        <p class="carousel-item__details--title">METODO DE BISECCIÓN</p>
+                        <p class="carousel-item__details--subtitle">Un método de búsqueda de raíces que opera en intervalos.
+                            <br>Comienza con un intervalo en el cual la función tiene signos opuestos en los extremos.
+                            <br>Luego, divide iterativamente el intervalo a la mitad y selecciona el subintervalo donde la función cambia de signo.
+                            <br><br>Este proceso continúa hasta alcanzar la precisión deseada, y la raíz se encuentra en el centro del subintervalo final.</p>
+                        <div class="carousel-item__details--icons">
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Tercer elemento del carrusel - Método de Gauss -->
+                <a href="" class="carousel-item">
+                    <img class="carousel-item__img" src="images/Gauss.png" alt="Portada_Gauss">
+                    <div class="carousel-item__details">
+                        <p class="carousel-item__details--title">METODO DE GAUSS</p>
+                        <p class="carousel-item__details--subtitle">Un procedimiento iterativo que busca transformar un sistema de ecuaciones lineales en otro equivalente pero más simple, llamado forma escalonada.
+                            <br>Se inicia con una matriz ampliada que representa el sistema y se aplican operaciones elementales de fila para obtener ceros por debajo de los elementos diagonales.
+                            <br><br>Este proceso se repite hasta obtener una forma escalonada, y luego se resuelve el sistema de manera más sencilla.</p>
+                        <div class="carousel-item__details--icons">
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Cuarto elemento del carrusel - Método de la Secante -->
+                <a href="../MetodoSecantes/HTML/home_page.html" class="carousel-item">
+                    <img class="carousel-item__img" src="images/Secante.png" alt="Portada_Secante">
+                    <div class="carousel-item__details">
+                        <p class="carousel-item__details--title">METODO DE LA SECANTE</p>
+                        <p class="carousel-item__details--subtitle">Un método iterativo para encontrar raíces de funciones.
+                            <br>La secante utiliza una aproximación de la derivada basada en dos puntos cercanos.
+                            <br>Comienza con dos suposiciones iniciales y ajusta su aproximación en cada iteración.
+                            <br><br>Este proceso continúa hasta alcanzar la precisión deseada.</p>
+                        <div class="carousel-item__details--icons">
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Quinto elemento del carrusel - Método de Newton Raphson -->
+                <a href="../MetodoNewton/HTML/home_page.html" class="carousel-item">
+                    <img class="carousel-item__img" src="images/Newton.png" alt="Portada_Newton">
+                    <div class="carousel-item__details">
+                        <p class="carousel-item__details--title">METODO DE NEWTON RAPHSON</p>
+                        <p class="carousel-item__details--subtitle">Enfoque iterativo para encontrar raíces de funciones.
+                            <br>Comienza con una suposición inicial y utiliza la pendiente de la tangente a la curva de la función para mejorar su aproximación en cada paso.
+                            <br><br>Este proceso se repite hasta lograr la precisión deseada.</p>
+                        <div class="carousel-item__details--icons">
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Inclusión del script JavaScript -->
+    <script src="script.js" type="module"></script>
+
+</body>
+</html>

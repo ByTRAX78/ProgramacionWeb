@@ -1,0 +1,98 @@
+/* Estilos generales del cuerpo del documento */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/Nueva Ruleta/images/fondo.jpg');
+    background-size: cover; 
+    background-position: center center;
+}
+
+/* Estilos para la tabla de entrada y resultados */
+#matrixTable {
+    width: 90%;
+    margin: 0 auto; /* Centrar la tabla en el eje horizontal */
+    border-collapse: separate; /* Cambiado a "separate" para permitir el espaciado */
+    border-spacing: 5px; /* Espaciado más pequeño entre las celdas de la tabla */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Agregado para redondear los bordes de la tabla */
+    overflow: hidden; /* Agregado para asegurar que los bordes redondeados se apliquen correctamente */
+}
+
+#matrixTable th, #matrixTable td {
+    padding: 15px;
+    border: 1px solid #7a81cf; /* Color de la sección de ecuación */
+    text-align: center;
+    border-radius: 7px;
+    background-color: #302158b7; /* Color de fondo oscuro de la sección de resultados */
+}
+
+.matrixInput, .valuesInput {
+    width: 60px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin: 5px;
+    border: 2px solid #7a81cf; /* Color de la sección de ecuación */
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.matrixInput:focus, .valuesInput:focus {
+    border-color: #294f75; /* Cambio de color al enfocar */
+}
+
+
+
+
+/* Estilo para el botón */
+#calculateButton {
+    padding: 12px;
+    background-color: #7a81cf; /* Color de la sección de ecuación */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#calculateButton:hover {
+    background-color: #294f75; /* Cambio de color al pasar el ratón */
+}
+
+#resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#resultsTable th, #resultsTable td {
+    padding: 12px;
+    border: 1px solid #302158b7; /* Color de fondo oscuro de la sección de resultados */
+    text-align: center;
+    background-color: #302158b7; /* Color de fondo oscuro de la sección de resultados */
+    color: #fff; /* Color de texto claro */
+}
+
+/* Estilos para el botón */
+#calculateButton {
+    padding: 15px 20px; /* Ajuste del tamaño del botón */
+    font-size: 16px; /* Tamaño del texto del botón */
+    background: linear-gradient(to right, #1f4068, #000000); /* Degradado entre azul oscuro y azul pastel */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    display: block; /* Convertir a bloque para centrar con márgenes automáticos */
+    margin: auto; /* Centrar automáticamente en el eje horizontal */
+}
+
+#calculateButton:hover {
+    background: linear-gradient(to right, #abcef0, #828ae7); /* Cambio de color al pasar el ratón */
+    transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+}
+
+#calculateButton:active {
+    background: linear-gradient(to right, #1f4068, #294f75); /* Cambio de color al hacer clic */
+}

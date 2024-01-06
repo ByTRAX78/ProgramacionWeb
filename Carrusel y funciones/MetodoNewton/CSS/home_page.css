@@ -1,0 +1,117 @@
+/* Estilos generales del cuerpo del documento */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/Nueva Ruleta/images/fondo.jpg');
+    background-size: cover; 
+    background-position: center center;
+}
+
+/* Estilos generales para las secciones */
+section {
+    margin: 20px;
+}
+
+/* Estilos para el título de cada sección */
+.section-title {
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos para la sección de ecuación */
+#ecuacion {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#titulo-ecuacion {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: -10px;
+    background-color: #7a81cf;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#caja-ecuacion {
+    background-color: #7a81cf;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.7);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.ecuacion {
+    width: calc(100% - 16px);
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 2px solid #2980b9;
+    border-radius: 5px;
+    color: #333;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.ecuacion:focus {
+    border-color: #7a81cf;
+}
+
+/* Estilos para la sección de resultados */
+#resultados {
+    display: flex;
+    color: #ffffff;
+    margin-bottom: 10px;
+    background-color: #7a81cf;
+    padding: 10px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#titulo-resultados {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.box-resultados {
+    background-color: #302158b7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 31, 63, 0.7);
+    width: 100%;
+    max-width: 300px;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 30px;
+}
+
+/* Efecto hover para cada casilla */
+#caja-ecuacion:hover {
+    background-color: #294f75;
+    transform: scale(1.02);
+}
+
+.ecuacion:hover {
+    border-color: #2c3e50;
+}
+
+.box-resultados:hover {
+    background-color: #481560;
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 600px) {
+    #caja-ecuacion, .box-resultados {
+        width: 91%;
+    }
+}
+
+

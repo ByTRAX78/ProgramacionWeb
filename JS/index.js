@@ -6,6 +6,7 @@ function Salir() {
     Out()
 }
 
+
 var imgUsuario = document.querySelectorAll('.imgUsuario');
 var btnMenu = document.querySelector('.btnMenu');
 
@@ -115,6 +116,7 @@ initAuthStateListener(user => {
             conterLogin.appendChild(btnLogin)
             Out();
         });
+     
 
         var btnConfig = document.querySelector('.configuracion')
 

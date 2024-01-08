@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../CSS/Index.css">
 <link rel="stylesheet" href="../dist/output.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+
 <style>
     body {
         display: flex;
@@ -19,56 +20,39 @@
         height: 100%;
         border: none;
     }
+    header.yourClassName {
+      /* Add your styles for the header when scrolled here */
+      background-color: blue;
+      /* Add any other styles you need */
+    }
 </style>
 </head>
 <body>
-    
-    <header class="text-gray-600 body-font w-full">
-        <div class="container-fluid mx-auto flex  p-5 flex-col md:flex-row items-center justify-between">
-         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-           <!-- Logo aquí -->
-           <button class="Login text-2xl  hover:text-gray-900 w-20">Log in</button>
-         </a>
-         <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center w-full flex">
-           <div class="flex justify-center w-full">
-             <a href="#" class="text-3xl mr-5 hover:text-gray-900 separacion">Home</a>
-             <a href="#" class="text-3xl mr-5 hover:text-gray-900 separacion" id="Abaut">Abaut Us</a>
-             <a href="#" class="text-3xl mr-5 hover:text-gray-900 separacion">Foroum</a>
-            
-           </div>
-           
-         </nav>
-         <button class=" items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-2xl mt-4 md:mt-0">Button
-           <!-- Icono aquí -->
-         </button>
-        </div>
-       </header>
-       
-       <div id="overlay"></div>
-       
-     
-    
-            
-            <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="btnMenu imgUsuario" type="button">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                <img src="" alt="" class="imgUsuario">
-            </button>
-            <div id="dropdownDivider" class="MenuWithLogin z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <ul class=" py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
-                <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-blue-600 dark:hover:bg-gray-600 dark:hover:text-white">Nose</a>
-                </li>
-                <li>
-                    <a href="#" class="configuracion block px-4 py-2 hover:bg-blue-600 dark:hover:bg-gray-600 dark:hover:text-white">Configuracion</a>
-                </li>
-                <li>
-                    <a href="#" class="opcions block px-4 py-2 hover:bg-blue-600 dark:hover:bg-gray-600 dark:hover:text-white">Salir</a>
-                </li>
-                </ul>
-                <div class="py-2">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
-                </div>
+    <div id="overlay"></div>
+    <header>
+    <div class="BarraNav "><div class = " ConterLogin  ">
+        <button class="Login ">Log in</button>
+        <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="btnMenu imgUsuario" type="button">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            <img src="" alt="" class="imgUsuario">
+        </button>
+        <div id="dropdownDivider" class="MenuWithLogin z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+            <ul class=" py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
+            <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nose</a>
+            </li>
+            <li>
+                <a href="#" class="configuracion block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Configuracion</a>
+            </li>
+            <li>
+                <a href="#" class="opcions block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Salir</a>
+            </li>
+            </ul>
+            <div class="py-2">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
             </div>
+        </div>
+        
             
         </div>
     
@@ -78,13 +62,38 @@
     
             
 
-            
+        <div class="Options">
+        <a href="#" class="separacion">
+            <p>Home</p>
+        </a>
+        <a href="#" class="separacion" id="Abaut">
+            <p>Abaut us</p>
+        </a>
+        <a href="#" class="separacion">
+            <p>Foroum</p>
+        </a>
+        </div>
     </div>
+</header>
     <div id="frame" class="abajo"> </div>
     
 
+    <script>
+        window.addEventListener('scroll', function() {
+          var header = document.querySelector('.BarraNav');
+          if (window.pageYOffset > 0) {
+            header.classList.add('yourClassName');
+          } else {
+            header.classList.remove('yourClassName');
+          }
+        });
+      </script>
     
+  
     <script src="../JS/index.js" type="module"></script>
+    
+  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </body>
 </html>

@@ -10,12 +10,12 @@ body {
 
 /* Definición de variables personalizadas utilizando :root */
 :root {
-  --carousel-item-height: 250px;
+  --carousel-item-height: 285px;
 }
 
 /* Estilos para el contenedor del carrusel */
 .carousel {
-  width: 100%;
+  width: 98%; 
   overflow-x: scroll;
   padding: 40px;
   position: relative;
@@ -35,7 +35,7 @@ body {
 .carousel-item {
   background-color: #caa5f1;
   width: 400px;
-  height: 250px;
+  height: 285px;
   border-radius: 25px;
   overflow: hidden;
   margin-right: 10px;
@@ -80,7 +80,7 @@ body {
   color: white;
   opacity: 0;
   transition: 450ms opacity;
-  padding: 10px;
+  padding: 20px;
   position: absolute;
   top: 0;
   left: 0;
@@ -122,7 +122,7 @@ body {
 }
 
 .carousel::-webkit-scrollbar-track-piece {
-  max-width: 100px;
+  max-width: 90px;
 }
 
 .carousel::-webkit-scrollbar-thumb {
@@ -133,9 +133,10 @@ body {
 
 /* Estilos para las flechas de desplazamiento izquierda y derecha */
 .scroll-left {
+  
   display: block;
   position: absolute;
-  top: calc(var(--carousel-item-height) - 30px);
+  top: calc(var(--carousel-item-height) - 80px);
   left: 0;
   z-index: 1;
 }
@@ -143,14 +144,14 @@ body {
 .scroll-right {
   display: block;
   position: absolute;
-  top: calc(var(--carousel-item-height) - 30px);
+  top: calc(var(--carousel-item-height) - 80px);
   right: 0;
   z-index: 2;
 }
 
 /* Estilos generales para las flechas de desplazamiento */
 .scroll-chevron {
-  font-size: 2rem; /* Ajuste del tamaño de la flecha para hacerlo más responsivo */
+  font-size: 3rem; /* Ajuste del tamaño de la flecha para hacerlo más responsivo */
   cursor: pointer;
   color: #fafafa;
 }
@@ -158,6 +159,6 @@ body {
 /* Estilos para el contenedor principal */
 .main {
   position: relative;
-  max-width: 800px; /* Ancho máximo para evitar que crezca demasiado */
+  max-width: 90vw; /* Ancho máximo para evitar que crezca demasiado */
   margin: 0 auto;
 }

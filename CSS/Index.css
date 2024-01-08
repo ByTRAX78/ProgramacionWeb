@@ -10,13 +10,13 @@
 }
 
 body{
-    display: flex;
+  
     height: 100vh;
    box-sizing: border-box;
    background-image: url('img/fondo.jpg');
    background-size: cover; 
    background-position: center center;
-   overflow: hidden;
+   
  
   
 }
@@ -27,11 +27,13 @@ body .Information{
    
   
 }
-.content{
-    margin-top: 80px;
+/* .content{
+    margin-top: 120px;
     height: 85%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     
 }
 .Information{
@@ -43,7 +45,7 @@ body .Information{
     padding: 30px;
     margin: 0 0 0 60px;
     width: 40%;
-    height: 70%;
+    height: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -174,4 +176,4 @@ transition: all 0.3s ease 0s;
     border-radius: 50%;
     grid-area: 1/1/1/1;
 }
-
+ */

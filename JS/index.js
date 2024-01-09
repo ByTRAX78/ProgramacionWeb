@@ -7,6 +7,20 @@ function Salir() {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elemento = document.getElementById('oda'); // Utiliza getElementById en lugar de querySelector
+    if (elemento !== null) {
+        window.addEventListener("scroll", function() {
+            elemento.classList.toggle("arriba", window.scrollY > 0);
+        });
+    } else {
+        console.error("No se encontró ningún elemento con el id 'oda'.");
+    }
+});
+
+
+
+
 var imgUsuario = document.querySelectorAll('.imgUsuario');
 var btnMenu = document.querySelector('.btnMenu');
 
@@ -41,16 +55,17 @@ btnLogin.addEventListener('click', function name() {
     var btnSalir = document.createElement('button')
     btnSalir.classList.add(
         'btnSalir',
-        'rounded-full',
-        'text-white',
-        'bg-gradient-to-r', 
-        'from-cyan-500', 
-        'to-blue-500',
-        'p-8',
-        'm-8',
-        'text-lg'
-        );
-    btnSalir.textContent = '<'
+    'rounded-full',
+    'text-white',
+    'bg-gradient-to-r', 
+    'from-cyan-500', 
+    'to-blue-500',
+    'p-4',
+    'm-4',
+    'text-lg',
+    'inline-block',
+    'shadow-md');
+    btnSalir.textContent = 'Atras'
     //Ponemos la pagina en el frama para que se muestre al usuarios
     frameLogin.src = '../HTML/Authentication.html';
     //La configuramos
@@ -64,7 +79,21 @@ btnLogin.addEventListener('click', function name() {
     overlay.appendChild(frameLogin);
     //Y lo volvemos visible
     overlay.style.visibility = 'visible'
+    
+   
+    document.addEventListener('DOMContentLoaded', function() {
+    var elemento = document.getElementById('oda'); // Utiliza getElementById en lugar de querySelector
+    if (elemento !== null) {
+        window.addEventListener("scroll", function() {
+            elemento.classList.toggle("arriba", window.scrollY > 0);
+        });
+    } else {
+        console.error("No se encontró ningún elemento con el id 'oda'.");
+    }
+});
 
+
+var over = document.getElementById('over');
     
     //Ponemos un evento en espera de que el usuaior quiera cerra la ventana
     btnSalir.addEventListener('click', function name() {
@@ -72,7 +101,7 @@ btnLogin.addEventListener('click', function name() {
         //Vaciamos el overlay y lo volvemos invisible
         overlay.innerHTML = '';
         overlay.style.visibility = 'hidden';
-
+       
         var btnGoogle = frameLogin
     })
 });
@@ -101,7 +130,7 @@ initAuthStateListener(user => {
         console.log(user);
         btnMenu.style.visibility = 'visible'
         imgUsuario[1].src = user.photoURL;
-
+       
         var conterLogin = document.querySelector('.ConterLogin');
         conterLogin.removeChild(btnLogin);    
 

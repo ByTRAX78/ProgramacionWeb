@@ -26,11 +26,12 @@
       /* Add any other styles you need */
     }
 </style>
+
 </head>
 <body>
     <div id="overlay"></div>
-    <header>
-    <div class="BarraNav "><div class = " ConterLogin  ">
+    <header id="oda">
+    <div class="BarraNav"><div class = " ConterLogin  ">
         <button class="Login ">Log in</button>
         <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="btnMenu imgUsuario" type="button">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -38,9 +39,7 @@
         </button>
         <div id="dropdownDivider" class="MenuWithLogin z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
             <ul class=" py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
-            <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nose</a>
-            </li>
+           
             <li>
                 <a href="#" class="configuracion block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Configuracion</a>
             </li>
@@ -48,9 +47,7 @@
                 <a href="#" class="opcions block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Salir</a>
             </li>
             </ul>
-            <div class="py-2">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
-            </div>
+           
         </div>
         
             
@@ -78,21 +75,12 @@
     <div id="frame" class="abajo"> </div>
     
 
-    <script>
-        window.addEventListener('scroll', function() {
-          var header = document.querySelector('.BarraNav');
-          if (window.pageYOffset > 0) {
-            header.classList.add('yourClassName');
-          } else {
-            header.classList.remove('yourClassName');
-          }
-        });
-      </script>
-    
   
+    
+    <script src="../JS/Overlay.js" type="module"></script>
     <script src="../JS/index.js" type="module"></script>
     
-  
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </body>

@@ -1,12 +1,13 @@
 
 .tamano{
     margin-top: 6vw;
-   
+  
+}
+.centrar{
     display: flex;
     flex-direction: column;
   
     align-items: center;
-   
 }
 .espaciado{
     margin-top: 2vw;
@@ -14,7 +15,9 @@
 .Flecha{
     display: flex;
     margin-top: 50px;
+  
 }
+
 
 @media only screen and (min-width: 961px) {
 

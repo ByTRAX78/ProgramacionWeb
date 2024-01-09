@@ -3,6 +3,7 @@
 }
 
 #window {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +13,7 @@
 #box {
     border-radius: 50px;
     height: auto;
+    width: 30vw;
     }
 
 .hidden {

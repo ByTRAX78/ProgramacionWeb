@@ -1,4 +1,20 @@
 
+.tamano{
+    margin-top: 6vw;
+   
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+   
+}
+.espaciado{
+    margin-top: 2vw;
+}
+.Flecha{
+    display: flex;
+    margin-top: 50px;
+}
 
 @media only screen and (min-width: 961px) {
 
@@ -81,7 +97,7 @@
     .pregunta  textarea {
         width: 95%;
         border-radius: 20px;
-        margin: 20px;
+        margin: 10px;
         height: auto;
         font-size: 25px;
         line-height: 1.5;
@@ -92,13 +108,16 @@
     .postear {
         display: flex;
         justify-content: center;
-        padding: 20px;
+        padding: 30px;
+      
     }
     
     .postear button {
         width: 300px;
         height: 50px;
         font-size: 20px ;
+        padding: 0px;
+       
     }
     
     .respuesta {

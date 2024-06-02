@@ -33,3 +33,5 @@ En nuestra página, hemos creado un conjunto de calculadoras internas diseñadas
 ### Authors
 
 - [@ByTRAX78](https://github.com/ByTRAX78)
+- [@ElColibrizurdo](https://github.com/ElColibrizurdo)
+- [@Yisnowy](https://github.com/Yisnowy)
